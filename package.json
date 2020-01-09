@@ -4,7 +4,7 @@
   "description": "simple app for managing favorite authors + books",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon ./src/server/index.js --exec babel-node -e js",
+    "start" : "nodemon ./src/server/index.js --exec babel-node --watch src/server",
     "test"  : "echo \"Error: no test specified\" && exit 1",
     "mongo" : "mongod --config /usr/local/etc/mongod.conf"
   },
