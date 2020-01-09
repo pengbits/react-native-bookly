@@ -4,22 +4,27 @@
   "description": "simple app for managing favorite authors + books",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon ./src/server/index.js --exec babel-node --watch src/server",
-    "test"  : "echo \"Error: no test specified\" && exit 1",
-    "mongo" : "mongod --config /usr/local/etc/mongod.conf"
+    "start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
+    "test": "nodemon --exec node_modules/cucumber/bin/cucumber-js --require-module @babel/register",
+    "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "cucumber": "^6.0.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "isomorphic-fetch": "^2.2.1",
     "mongodb": "^3.4.1",
     "mongoose": "^5.8.6",
-    "nodemon": "^2.0.2"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "nodemon": "^2.0.2",
+    "xml-js": "^1.6.11"
   }
 }
