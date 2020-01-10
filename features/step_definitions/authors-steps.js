@@ -6,10 +6,12 @@ import fetch from './utils/fetch'
 
 let authors
 let author
+let expectedAuthor
 
 Before(() => {
   authors = []
   author  = undefined
+  expectedAuthor = undefined
 })
 
 Given('there are authors in the database', function () {
@@ -19,17 +21,22 @@ Given('there are authors in the database', function () {
 
 // GET /authors/1
 When('I fetch the author details endpoint', async () => {
-  await fetch(`/authors`).then((xhr) => {
-    authors = xhr.authors
+  const {length} = GetAuthors.authors
+  const i = Math.floor(Math.random() * length)
+  expectedAuthor = GetAuthors.authors[i]
+  await fetch(`/authors/${expectedAuthor.vendorId}`).then((json) => {
+    author = json.author
   })
 })
 
 Then('the response will contain details about the author', function () {
-  expect(authors).not.to.be.empty
+  expect(author).not.to.be.undefined
+  expect(author.name).to.equal(expectedAuthor.name)
+  expect(author.id).to.equal(expectedAuthor.id)
 });
 
 // GET /authors
-When('I fetch the authors endpoint', function () {
+When('I fetch the authors endpoint', async () =>  {
 });
 
 Then('the response will contain a list of authors', function () {
