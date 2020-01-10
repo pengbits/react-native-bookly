@@ -31,15 +31,17 @@ When('I fetch the author details endpoint', async () => {
 
 Then('the response will contain details about the author', function () {
   expect(author).not.to.be.undefined
-  expect(author.name).to.equal(expectedAuthor.name)
-  expect(author.id).to.equal(expectedAuthor.id)
+  expect(author).to.include.keys('_id','vendorId','name')
 });
 
 // GET /authors
 When('I fetch the authors endpoint', async () =>  {
+  await fetch(`/authors`).then((json) => {
+    authors = json.authors
+  })
 });
 
 Then('the response will contain a list of authors', function () {
-  // Write code here that turns the phrase above into concrete actions
+  expect(authors).not.to.be.empty
 });
 
