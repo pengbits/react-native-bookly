@@ -19,11 +19,10 @@ const search = async (req,res,next) => {
   respondWith(res, {author})
 }
 
-/*
 const create = async (req,res,next) => {
   const author = await new Author(req.body).save()
   respondWith(res, {author})  
-}*/
+}
 
 const update = async (req,res) => {
   const author   = await findAuthor(req.params)
@@ -74,8 +73,7 @@ export default {
   list    : dispatch(list),
   get     : dispatch(get),
   search  : dispatch(search),
-  update  : dispatch(update)
-  //,
-  // create  : dispatch(create),
+  update  : dispatch(update),
+  create  : dispatch(create),
   // remove  : dispatch(remove)
 }

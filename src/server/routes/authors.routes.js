@@ -8,7 +8,7 @@ export default () => {
   api.get('/search',  controller.search)
   api.get('/:id',     controller.get)
   api.put('/:id',     controller.update)
-  // api.post('/'  ,     controller.create)
+  api.post('/'  ,     controller.create)
   // api.delete('/:id',  controller.remove)
   
   return api
