@@ -76,11 +76,16 @@ const withMockAuthor = () => {
    
   // DELETE /authors/9226
   Given('I have an author I want to delete', function () {
+    author = withMockAuthor()
   });
 
-  When('I fetch the delete author endpoint', function () {
+  When('I fetch the delete author endpoint', async () => {
+    await fetch(`/authors`, {
+      method: 'DELETE'
+    }).then((json) => {
+      console.log(json)
+    })
   });
-
 
   Then('my author will not be in the list', function () {
   });
