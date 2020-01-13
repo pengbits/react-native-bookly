@@ -30,7 +30,7 @@ const update = async (req,res) => {
   const response = await Object.assign(author, req.body).save()
   respondWith(res, {author})
 }
-/*
+
 const remove = async (req,res) => {
   const author   = await findAuthor(req.params)
   const response = await Author.deleteOne({
@@ -42,7 +42,6 @@ const remove = async (req,res) => {
     author
   })
 }
-*/
 
 // helpers
 // ----------------------------------------------------------------------------
@@ -75,5 +74,5 @@ export default {
   search  : dispatch(search),
   update  : dispatch(update),
   create  : dispatch(create),
-  // remove  : dispatch(remove)
+  remove  : dispatch(remove)
 }

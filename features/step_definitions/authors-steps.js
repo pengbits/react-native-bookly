@@ -7,11 +7,18 @@ import fetch from './utils/fetch'
 let authors
 let author
 let expectedAuthor
+let deletedAuthor
 
 Before(() => {
   authors = []
   author  = undefined
   expectedAuthor = undefined
+  deletedAuthor = undefined
+  console.log('Before')
+})
+
+After(() => {
+  console.log('After')
 })
 
 const withMockAuthor = () => {
@@ -51,7 +58,6 @@ const withMockAuthor = () => {
   });
 
 
-
   // POST /authors {name:'William Gibson','vendorId':9226}
   Given('I have an author with valid attributes', function () {
     expectedAuthor = withMockAuthor()
@@ -77,15 +83,21 @@ const withMockAuthor = () => {
   // DELETE /authors/9226
   Given('I have an author I want to delete', function () {
     author = withMockAuthor()
+    expect(author.vendorId).to.be.a('string')
   });
 
   When('I fetch the delete author endpoint', async () => {
-    await fetch(`/authors`, {
+    await fetch(`/authors/${author.vendorId}`, {
       method: 'DELETE'
-    }).then((json) => {
-      console.log(json)
+    }).then((xhr) => {
+      expect(xhr.success)
+      deletedAuthor = xhr.author
     })
   });
 
   Then('my author will not be in the list', function () {
+    const matches = authors.filter((a) => {
+      return a.vendorId == deletedAuthor.vendorId
+    })
+    console.log(matches)
   });
