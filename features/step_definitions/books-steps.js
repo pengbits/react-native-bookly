@@ -5,13 +5,18 @@ import GetBooksMock from '../../mocks/get-books.mock'
 import fetch from './utils/fetch'
 // import {SeedAuthors} from '../../src/server/db/seeds'
 
+Before(() => {
+  let books = []
+})
+
 Given('there are Books in the database', function () {
-  return 'pending';
+  expect(GetBooksMock.books).not.to.be.empty
 });
 
-
-When('I fetch the Books endpoint', function () {
-  return 'pending';
+When('I fetch the Books endpoint', async function () {
+  await fetch(`/books`).then((json) => {
+    books = json.books
+  })
 });
 
 Then('the response will contain a list of Books', function () {
