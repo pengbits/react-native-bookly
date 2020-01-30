@@ -7,11 +7,11 @@ const list = async (req,res) => {
   const books = await Book.find({})
   respondWith(res, {books})
 } 
-// 
-// const get = async (req,res,next) => {
-//   const book = await findbook(req.params)
-//   respondWith(res, {book})
-// }
+
+const get = async (req,res,next) => {
+  const book = await findbook(req.params)
+  respondWith(res, {book})
+}
 // 
 // const search = async (req,res,next) => {
 //   const book = await GoodReadsAPI.search(req.query.q)
@@ -45,7 +45,7 @@ const list = async (req,res) => {
 // helpers
 // ----------------------------------------------------------------------------
 const findbook = ({id}) => {
-  return book.findOne({vendorId:id})
+  return Book.findOne({vendorId:id})
     .then((book) => {
       if(!book)  throw new Error(`could not find book with id ${id}`)
       return book
@@ -69,7 +69,8 @@ const dispatch = (method) => (res,req,next) => {
 
 export default {
   list    : dispatch(list),
-//   get     : dispatch(get),
+  get     : dispatch(get)
+//,
 //   search  : dispatch(search),
 //   update  : dispatch(update),
 //   create  : dispatch(create),
