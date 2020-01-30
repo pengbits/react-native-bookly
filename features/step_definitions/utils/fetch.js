@@ -13,7 +13,7 @@ const performFetch = (path=null, opts={}) => {
     opts.credentials=  "same-origin"
   }
 
-  console.log(`|fetch| ${opts.method || 'GET'} ${url} `)
+  // console.log(`|fetch| ${opts.method || 'GET'} ${url} `)
 
   return fetch(url, opts)
     .then(function(xhr){

@@ -3,22 +3,24 @@ const assert = require('assert');
 const { Before, After, Given, When, Then } = require('cucumber');
 import GetAuthors from '../../mocks/get-authors.mock'
 import fetch from './utils/fetch'
+import SeedDB from '../../src/server/db/seeds'
 
 let authors
 let author
 let expectedAuthor
 let deletedAuthor
 
+// start fresh
+SeedDB()
+
 Before(() => {
   authors = []
   author  = undefined
   expectedAuthor = undefined
   deletedAuthor = undefined
-  console.log('Before')
 })
 
 After(() => {
-  console.log('After')
 })
 
 const withMockAuthor = () => {
@@ -60,7 +62,11 @@ const withMockAuthor = () => {
 
   // POST /authors {name:'William Gibson','vendorId':9226}
   Given('I have an author with valid attributes', function () {
-    expectedAuthor = withMockAuthor()
+    expectedAuthor = {
+      name: "Jonathan Tropper",
+      vendorId: "26163",
+      about: "Jonathan Tropper is the author of Everything Changes, The Book of Joe , which was a Booksense selection, and Plan B"
+    }
   });
 
   When('I save it to the database', async () => {
@@ -76,8 +82,7 @@ const withMockAuthor = () => {
       authors = json.authors
     })
     const matches = authors.filter(a => a.vendorId == expectedAuthor.vendorId)
-    expect(matches).not.to.be.empty
-    console.log(`${matches.length} matches`)
+    expect(matches.length).to.equal(1)
   })
    
   // DELETE /authors/9226
@@ -99,5 +104,5 @@ const withMockAuthor = () => {
     const matches = authors.filter((a) => {
       return a.vendorId == deletedAuthor.vendorId
     })
-    console.log(matches)
+    expect(matches).to.be.empty
   });

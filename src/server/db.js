@@ -8,3 +8,5 @@ db.once('open', function() {
   console.log('db open!')
   // we're connected!
 });
+
+export default db

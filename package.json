@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
-    "db:seed":"nodemon --exec babel-node ./src/server/db/seeds.js --watch src/server",
-    "test":  "nodemon --exec node_modules/cucumber/bin/cucumber-js --require-module @babel/register",
+    "test": "nodemon --exec node_modules/cucumber/bin/cucumber-js --require-module @babel/register",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "author": "",
