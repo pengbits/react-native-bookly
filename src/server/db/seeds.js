@@ -3,7 +3,7 @@ import Author from '../models/author.model'
 import GetAuthorsMock from '../../../mocks/get-authors.mock'
 const {authors} = GetAuthorsMock
 
-const SeedDB = function(){
+export const SeedAuthors = () => {
 
   console.log('deleting all authors from db...')
   Author.deleteMany({}, function(res){
@@ -18,5 +18,3 @@ const SeedDB = function(){
   })
 
 }
-
-export default SeedDB
