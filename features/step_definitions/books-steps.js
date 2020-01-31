@@ -9,6 +9,7 @@ let books
 let book
 let expectedBook
 let deletedBook
+let bookEdits
 
 SeedModel('Book')
 
@@ -100,3 +101,33 @@ SeedModel('Book')
     })
     expect(matches).to.be.empty
   });
+  
+  
+  // PUT /books/9226
+  When('I make changes to the book', () => {
+    bookEdits = {
+      title  : expectedBook.name  + ' _EDIT_',
+      about : expectedBook.about + ' _EDIT_'
+    }
+  });
+
+  When('I send the changes to the book details endpoint', async () => {
+    await fetch(`/books/${expectedBook.vendorId}`, {
+      method: 'PUT',
+      body: {
+        title: bookEdits.name,
+        about: bookEdits.about
+      }
+    }).then((xhr) => {
+      expect(xhr.success)
+    })
+  });
+         
+  Then('the book contains my changes', async () => {
+    // (when i fetch the book details endpoint)
+    book = undefined
+    await fetch(`/books/${expectedBook.vendorId}`).then((json) => {
+      book = json.book
+    })
+    expect(book).to.include(bookEdits)
+  })
