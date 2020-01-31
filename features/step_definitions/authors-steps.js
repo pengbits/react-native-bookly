@@ -3,7 +3,7 @@ const assert = require('assert');
 const { Before, After, Given, When, Then } = require('cucumber');
 import GetAuthors from '../../mocks/get-authors.mock'
 import fetch from './utils/fetch'
-import {SeedAuthors} from '../../src/server/db/seeds'
+import {SeedModel} from '../../src/server/db/seeds'
 
 let authors
 let author
@@ -11,7 +11,7 @@ let expectedAuthor
 let deletedAuthor
 
 // start fresh
-SeedAuthors()
+SeedModel('Author')
 
 Before(() => {
   authors = []
