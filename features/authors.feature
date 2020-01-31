@@ -34,4 +34,5 @@ Scenario: Delete an Author
   Scenario: Find an author by name 
     Given the name of a well-known author
      When I visit the search endpoint with the name as the query and type='author'
-     Then the response will contain details about the author
+     Then the response will contain a name and id for the author   
+     

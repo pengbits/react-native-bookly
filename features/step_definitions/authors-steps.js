@@ -140,7 +140,7 @@ SeedModel('Author')
    
   // GET /authors/search?q=william%20gibson
   Given('the name of a well-known author', () => {
-    authorQuery = 'William'
+    authorQuery = 'William Gibson'
   });
 
   When('I visit the search endpoint with the name as the query and type=\'author\'', async () => {
@@ -149,6 +149,13 @@ SeedModel('Author')
         q:authorQuery
       }
     })
-    .then(xhr => console.log(xhr))
-      // .catch(e => console.error(e.message))
+    .then(xhr => {
+      author = xhr.author
+      expect(author.name.toLowerCase()).to.match(new RegExp(authorQuery.toLowerCase()))    
+    })
+  })  
+  
+  Then('the response will contain a name and id for the author', () => {
+    expect(author).not.to.be.undefined
+    expect(author).to.include.keys('vendorId','name')
   });
