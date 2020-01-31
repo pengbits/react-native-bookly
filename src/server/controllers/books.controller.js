@@ -30,17 +30,17 @@ const create = async (req,res,next) => {
 //   respondWith(res, {book})
 // }
 // 
-// const remove = async (req,res) => {
-//   const book   = await findbook(req.params)
-//   const response = await book.deleteOne({
-//     vendorId:req.params.id
-//   })
-// 
-//   respondWith(res, {
-//     success: response.ok,
-//     book
-//   })
-// }
+const remove = async (req,res) => {
+  const book = await findbook(req.params)
+  const response = await book.deleteOne({
+    vendorId:req.params.id
+  })
+
+  respondWith(res, {
+    success: response.ok,
+    book
+  })
+}
 
 // helpers
 // ----------------------------------------------------------------------------
@@ -70,9 +70,8 @@ const dispatch = (method) => (res,req,next) => {
 export default {
   list    : dispatch(list),
   get     : dispatch(get),
-  // search  : dispatch(search),
+  create  : dispatch(create),
+  remove  : dispatch(remove)
   // update  : dispatch(update)
-  create  : dispatch(create)
-//,
-//   remove  : dispatch(remove)
+
 }

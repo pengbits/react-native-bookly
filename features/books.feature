@@ -17,9 +17,9 @@ Scenario: Create a Book
     And I fetch the books endpoint
    Then my book will be in the list
 
-# Scenario: Delete a Book
-#   Given there are books in the database
-#     And I have a book I want to delete
-#    When I fetch the delete book endpoint
-#     And I fetch the books endpoint
-#    Then my book will not be in the list
+Scenario: Delete a Book
+  Given there are books in the database
+    And I have a book I want to delete
+   When I fetch the delete book endpoint
+    And I fetch the books endpoint
+   Then my book will not be in the list

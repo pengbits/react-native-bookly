@@ -76,3 +76,27 @@ SeedModel('Book')
     const matches = books.filter(b => b.vendorId == expectedBook.vendorId)
     expect(matches.length).to.equal(1)
   })
+  
+  // DELETE /books/38140077
+  Given('I have a book I want to delete', function () {
+    withMockBook()
+    expect(expectedBook.vendorId).to.be.a('string')
+  });
+
+  When('I fetch the delete book endpoint', async () => {
+    await fetch(`/books/${expectedBook.vendorId}`, {
+      method: 'DELETE'
+    }).then((xhr) => {
+      expect(xhr.success)
+      deletedBook = xhr.book
+    })
+  });
+
+  // (when i fetch the books endpoint)
+
+  Then('my book will not be in the list', function () {
+    const matches = books.filter((a) => {
+      return a.vendorId == deletedBook.vendorId
+    })
+    expect(matches).to.be.empty
+  });

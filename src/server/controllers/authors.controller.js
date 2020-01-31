@@ -72,7 +72,8 @@ export default {
   list    : dispatch(list),
   get     : dispatch(get),
   search  : dispatch(search),
-  update  : dispatch(update),
   create  : dispatch(create),
-  remove  : dispatch(remove)
+  remove  : dispatch(remove),
+  update  : dispatch(update)
+
 }
