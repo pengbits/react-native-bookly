@@ -50,3 +50,29 @@ SeedModel('Book')
     expect(book).not.to.be.undefined
     expect(book).to.include.keys('_id','title','author','vendorId')
   });
+  
+  // POST /books {title:'Eskiboy: Wiley','vendorId':34846939}
+  // IMPORTANT: we can't reuse one of the mocks for this step
+  Given('I have a book with valid attributes', function () {
+    expectedBook = {
+      author: "Richard Kylea Cowier",
+      vendorId: "34846939",
+      title: "Eskiboy: Wiley"
+    }
+  });
+
+  When('I save the book to the database', async () => {
+    await fetch(`/authors`, {
+      method: 'POST',
+      body: expectedBook
+    })
+  })
+   
+  Then('my book will be in the list', async () => {
+    books = []
+    await fetch(`/books`).then((json) => {
+      books = json.books
+    })
+    const matches = books.filter(b => b.vendorId == expectedBook.vendorId)
+    expect(matches.length).to.equal(1)
+  })

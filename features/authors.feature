@@ -13,7 +13,7 @@ Scenario: Get an author
   
 Scenario: Create an author
   Given I have an author with valid attributes
-   When I save it to the database
+   When I save the author to the database
     And I fetch the authors endpoint
    Then my author will be in the list
 
