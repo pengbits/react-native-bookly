@@ -64,7 +64,11 @@ SeedModel('Author')
     When('I save the author to the database', async () => {
       await fetch(`/authors`, {
         method: 'POST',
-        body: expectedAuthor
+        body: {
+          name      : expectedAuthor.name, 
+          about     : expectedAuthor.about, 
+          vendorId  : expectedAuthor.vendorId
+        }
       })
     })
      

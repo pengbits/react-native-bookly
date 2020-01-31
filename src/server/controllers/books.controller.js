@@ -18,11 +18,11 @@ const get = async (req,res,next) => {
 //   respondWith(res, {book})
 // }
 // 
-// const create = async (req,res,next) => {
-//   const book = await new book(req.body).save()
-//   respondWith(res, {book})  
-// }
-// 
+const create = async (req,res,next) => {
+  const book = await new Book(req.body).save()
+  respondWith(res, {book})  
+}
+
 // const update = async (req,res) => {
 //   const book   = await findbook(req.params)
 //   console.log(req.body)
@@ -69,10 +69,10 @@ const dispatch = (method) => (res,req,next) => {
 
 export default {
   list    : dispatch(list),
-  get     : dispatch(get)
+  get     : dispatch(get),
+  // search  : dispatch(search),
+  // update  : dispatch(update)
+  create  : dispatch(create)
 //,
-//   search  : dispatch(search),
-//   update  : dispatch(update),
-//   create  : dispatch(create),
 //   remove  : dispatch(remove)
 }

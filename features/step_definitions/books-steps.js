@@ -62,7 +62,7 @@ SeedModel('Book')
   });
 
   When('I save the book to the database', async () => {
-    await fetch(`/authors`, {
+    await fetch(`/books`, {
       method: 'POST',
       body: expectedBook
     })
