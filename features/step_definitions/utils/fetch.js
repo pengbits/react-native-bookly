@@ -5,7 +5,7 @@ const performFetch = (path=null, opts={}) => {
   if(!path) throw new Error('must provide a path to fetch')
   const url = `${host}${path}`
   
-  if(opts.body && /post|POST/.test(opts.method)){
+  if(opts.body && /post|put/.test(opts.method.toLowerCase())){
     opts.body = JSON.stringify(opts.body)
     opts.headers = {
       "Content-Type": "application/json"

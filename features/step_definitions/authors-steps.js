@@ -9,6 +9,7 @@ let authors
 let author
 let expectedAuthor
 let deletedAuthor
+let authorEdits
 
 SeedModel('Author')
 
@@ -82,7 +83,7 @@ SeedModel('Author')
     })
      
     // DELETE /authors/9226
-    Given('I have an author I want to delete', function () {
+    Given('I have an author I want to delete', () => {
       withMockAuthor()
       expect(expectedAuthor.vendorId).to.be.a('string')
     });
@@ -98,9 +99,39 @@ SeedModel('Author')
 
     // (when i fetch the authors endpoint)
 
-    Then('my author will not be in the list', function () {
+    Then('my author will not be in the list',  () => {
       const matches = authors.filter((a) => {
         return a.vendorId == deletedAuthor.vendorId
       })
       expect(matches).to.be.empty
     });
+    
+    
+   // PUT /authors/9226
+   When('I make changes to the author', () => {
+     authorEdits = {
+       name  : expectedAuthor.name  + ' _EDIT_',
+       about : expectedAuthor.about + ' _EDIT_'
+     }
+   });
+
+   When('I send the changes to the author details endpoint', async () => {
+     await fetch(`/authors/${expectedAuthor.vendorId}`, {
+       method: 'PUT',
+       body: {
+         name: authorEdits.name,
+         about: authorEdits.about
+       }
+     }).then((xhr) => {
+       expect(xhr.success)
+     })
+   });
+          
+   Then('the author contains my changes', async () => {
+     // (when i fetch the author details endpoint)
+     author = undefined
+     await fetch(`/authors/${expectedAuthor.vendorId}`).then((json) => {
+       author = json.author
+     })
+     expect(author).to.include(authorEdits)
+   })

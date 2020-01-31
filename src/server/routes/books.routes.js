@@ -5,9 +5,8 @@ export default () => {
   const api = Router();
   
   api.get('/'   ,     controller.list)
-  //api.get('/search',  controller.search)
   api.get('/:id',     controller.get)
-  //api.put('/:id',     controller.update)
+  api.put('/:id',     controller.update)
   api.post('/'  ,     controller.create)
   api.delete('/:id',  controller.remove)
   

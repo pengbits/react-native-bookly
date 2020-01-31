@@ -23,3 +23,11 @@ Scenario: Delete an Author
    When I fetch the delete author endpoint
     And I fetch the authors endpoint
    Then my author will not be in the list
+   
+ Scenario: Update an Author
+   Given there are authors in the database
+    When I fetch the author details endpoint
+     And I make changes to the author
+     And I send the changes to the author details endpoint
+    Then the author contains my changes
+   

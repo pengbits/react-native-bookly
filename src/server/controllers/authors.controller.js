@@ -26,7 +26,6 @@ const create = async (req,res,next) => {
 
 const update = async (req,res) => {
   const author   = await findAuthor(req.params)
-  console.log(req.body)
   const response = await Object.assign(author, req.body).save()
   respondWith(res, {author})
 }

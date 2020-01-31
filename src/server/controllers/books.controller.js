@@ -23,13 +23,12 @@ const create = async (req,res,next) => {
   respondWith(res, {book})  
 }
 
-// const update = async (req,res) => {
-//   const book   = await findbook(req.params)
-//   console.log(req.body)
-//   const response = await Object.assign(book, req.body).save()
-//   respondWith(res, {book})
-// }
-// 
+const update = async (req,res) => {
+  const book   = await findbook(req.params)
+  const response = await Object.assign(book, req.body).save()
+  respondWith(res, {book}) // doesn't include changed attributes
+}
+
 const remove = async (req,res) => {
   const book = await findbook(req.params)
   const response = await book.deleteOne({
@@ -71,7 +70,7 @@ export default {
   list    : dispatch(list),
   get     : dispatch(get),
   create  : dispatch(create),
-  remove  : dispatch(remove)
-  // update  : dispatch(update)
+  remove  : dispatch(remove),
+  update  : dispatch(update)
 
 }
