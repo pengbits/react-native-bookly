@@ -13,15 +13,6 @@ let deletedAuthor
 // start fresh
 SeedModel('Author')
 
-Before(() => {
-  authors = []
-  author  = undefined
-  expectedAuthor = undefined
-  deletedAuthor = undefined
-})
-
-After(() => {
-})
 
 const withMockAuthor = () => {
   const {length}     = GetAuthors.authors
@@ -31,12 +22,13 @@ const withMockAuthor = () => {
 }
 
   Given('there are authors in the database', function () {
-    expect(GetAuthors.authors).not.to.be.empty
+    expect(GetAuthors.authors).not.to.be.empty // not proof of anything really, 
   });
 
 
   // GET /authors/9226
   When('I fetch the author details endpoint', async () => {
+    author = undefined
     withMockAuthor()
     await fetch(`/authors/${expectedAuthor.vendorId}`).then((json) => {
       author = json.author
@@ -50,6 +42,7 @@ const withMockAuthor = () => {
 
   // GET /authors
   When('I fetch the authors endpoint', async () =>  {
+    authors = []
     await fetch(`/authors`).then((json) => {
       authors = json.authors
     })
@@ -61,6 +54,7 @@ const withMockAuthor = () => {
 
 
   // POST /authors {name:'William Gibson','vendorId':9226}
+  // IMPORTANT: we can't reuse one of the mocks for this step
   Given('I have an author with valid attributes', function () {
     expectedAuthor = {
       name: "Jonathan Tropper",
@@ -78,6 +72,7 @@ const withMockAuthor = () => {
   })
    
   Then('my author will be in the list', async () => {
+    authors = []
     await fetch(`/authors`).then((json) => {
       authors = json.authors
     })
@@ -87,18 +82,20 @@ const withMockAuthor = () => {
    
   // DELETE /authors/9226
   Given('I have an author I want to delete', function () {
-    author = withMockAuthor()
-    expect(author.vendorId).to.be.a('string')
+    withMockAuthor()
+    expect(expectedAuthor.vendorId).to.be.a('string')
   });
 
   When('I fetch the delete author endpoint', async () => {
-    await fetch(`/authors/${author.vendorId}`, {
+    await fetch(`/authors/${expectedAuthor.vendorId}`, {
       method: 'DELETE'
     }).then((xhr) => {
       expect(xhr.success)
       deletedAuthor = xhr.author
     })
   });
+
+  // (when i fetch the authors endpoint)
 
   Then('my author will not be in the list', function () {
     const matches = authors.filter((a) => {
