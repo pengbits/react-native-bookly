@@ -10,6 +10,7 @@ let author
 let expectedAuthor
 let deletedAuthor
 let authorEdits
+let authorQuery 
 
 SeedModel('Author')
 
@@ -135,3 +136,26 @@ SeedModel('Author')
      })
      expect(author).to.include(authorEdits)
    })
+   
+   
+  // GET /authors/search?q=william%20gibson
+  Given('the name of a well-known author', () => {
+    authorQuery = 'William Gibson'
+  });
+
+  When('I visit the search endpoint with the name as the query and type=\'author\'', async () => {
+    await fetch(`/authors/search`, {
+      params:{
+        q:authorQuery
+      }
+    })
+    .then(xhr => {
+      author = xhr.author
+      expect(author.name.toLowerCase()).to.match(new RegExp(authorQuery.toLowerCase()))    
+    })
+  })  
+  
+  Then('the response will contain a name and id for the author', () => {
+    expect(author).not.to.be.undefined
+    expect(author).to.include.keys('vendorId','name')
+  });
