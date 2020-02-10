@@ -40,6 +40,7 @@ SeedModel('Author')
 
 
     // GET /authors/9226
+    // todo - if not in db, should we optimisticlly import from vendor? 
     When('I fetch the author details endpoint', async () => {
       author = undefined
       withMockAuthor()
@@ -157,5 +158,22 @@ SeedModel('Author')
   
   Then('the response will contain a name and id for the author', () => {
     expect(author).not.to.be.undefined
+    expect(author).to.include.keys('vendorId','name')
+  });
+
+  let authorId
+  Given('I have an author\'s vendorId', () => {
+    authorId = 9226
+  });
+
+  When('I visit the get-vendor-author endpoint', async () => {
+    await fetch(`/authors/${authorId}/vendor`).then(xhr => {
+      author = xhr.author
+    })
+  });
+
+  Then('the response will contain the vendor\'s record for the author',  () => {
+    expect(author).not.to.be.undefined
+    console.log(author)
     expect(author).to.include.keys('vendorId','name')
   });
