@@ -135,7 +135,7 @@ SeedModel('Book')
   })
 
 
-  // POST /books/9226/favorite
+  // PUT /books/9226/favorite
   Given('I have a book I would like to favorite', function () {
     favoritedBook = withMockBook()
   });
