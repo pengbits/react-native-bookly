@@ -131,3 +131,14 @@ SeedModel('Book')
     })
     expect(book).to.include(bookEdits)
   })
+
+
+  // POST /books/9226/favorite
+  Given('I have a book I would like to favorite', function () {
+  });
+
+  When('I visit the favorite book endpoint', function () {
+  });
+
+  Then('my book will be added to the list of favorites', function () {
+  });

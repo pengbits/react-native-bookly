@@ -23,3 +23,11 @@ Scenario: Delete a Book
    When I fetch the delete book endpoint
     And I fetch the books endpoint
    Then my book will not be in the list
+   
+Scenario: Favorite a Book
+  Given I have a book I would like to favorite
+   When I visit the favorite book endpoint
+   Then my book will be added to the list of favorites
+
+   
+   
