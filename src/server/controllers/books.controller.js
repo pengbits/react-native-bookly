@@ -41,21 +41,33 @@ const remove = async (req,res) => {
   })
 }
 
-const favorite = async(req,res) => {
-  let success
-  const book     = await findbook(req.params)
-  const response = await Object.assign(book, {
-    favorite:true
-  }).save()
 
-  respondWith(res, {book})
-}
-
+// GET /books/favorites 
 const favorites = async(req,res) => {
   const books = await Book.find({favorite:true})
-  console.log(`found ${books.length} favorited books`)
   respondWith(res, {books})
 }
+
+
+// PUT books/98787/favorite
+const favorite = async(req,res) => {
+  const favorited = await setIsFavorite(req, {favorite:true})
+  respondWith(res, {book:favorited})
+}
+
+// PUT books/98787/unfavorite
+const unfavorite = async(req,res) => {
+  const unfavorited = await setIsFavorite(req, {favorite:false})
+  respondWith(res, {book:unfavorited})
+}
+
+const setIsFavorite = async(req,attrs) => {
+  const book = await findbook(req.params)
+  const response = await Object.assign(book, attrs).save()
+  console.log(response)
+  return book
+}
+
 
 // helpers
 // ----------------------------------------------------------------------------
@@ -83,11 +95,12 @@ const dispatch = (method) => (res,req,next) => {
 }
 
 export default {
-  list    : dispatch(list),
-  get     : dispatch(get),
-  create  : dispatch(create),
-  remove  : dispatch(remove),
-  update  : dispatch(update),
-  favorite  : dispatch(favorite),
-  favorites : dispatch(favorites)
+  list        : dispatch(list),
+  get         : dispatch(get),
+  create      : dispatch(create),
+  remove      : dispatch(remove),
+  update      : dispatch(update),
+  favorites   : dispatch(favorites),
+  favorite    : dispatch(favorite),
+  unfavorite  : dispatch(unfavorite)
 }

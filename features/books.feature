@@ -29,5 +29,10 @@ Scenario: Favorite a Book
    When I visit the favorite book endpoint
    Then my book will be added to the list of favorites
 
+Scenario: Unfavorite a Book
+ Given I have a book I would like to unfavorite
+  When I visit the unfavorite book endpoint
+  Then my book will be removed from the list of favorites
+
    
    
