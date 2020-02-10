@@ -63,7 +63,8 @@ class GoodReadsAPI {
       case '/api/author_url':
       case '/author/show':
         const authorJson = this.extractAuthorJson(json)
-        return this.parseAuthor(authorJson, (endpoint=='/api/author_url' ? 'search':'show'))
+        console.log(authorJson)
+        return this.parseAuthor(authorJson, (endpoint=='/api/author_url' ? 'search':'show_author'))
 
       default:
         return null
@@ -72,20 +73,28 @@ class GoodReadsAPI {
 
   
   parseAuthor(json, method) {
-    return method == 'search' ? {
-      name:       json.name._cdata,
-      vendorId:   json._attributes.id
-    } : {
-      name:       json.name._text,
-      vendorId:   json.id._text
+    if (method == 'search') return {
+      name      : json.name._cdata,
+      vendorId  : json._attributes.id,
+      link      : json.link._text
     }
+    
+    if( method == 'show_author') return {
+      name      : json.name._text,
+      vendorId  : json.id._text,
+      link      : json.link._cdata,
+      image     : json.large_image_url._cdata,
+      about     : json.about._cdata
+    }
+    
+    return {}
   }
 
   extractAuthorJson(json){
-    if(!json.GoodreadsResponse || !json.GoodreadsResponse.author){
-      throw new Error('bad json response')
-    }
-    return json.GoodreadsResponse.author
+    const author = getProp(['GoodreadsResponse','author'], json)
+    if(!author) throw new Error('bad json response')
+
+    return author
   }
 }
 

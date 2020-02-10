@@ -158,7 +158,7 @@ SeedModel('Author')
   
   Then('the response will contain a name and id for the author', () => {
     expect(author).not.to.be.undefined
-    expect(author).to.include.keys('vendorId','name')
+    expect(author).to.include.keys('vendorId','name','link')
   });
 
   let authorId
@@ -173,7 +173,6 @@ SeedModel('Author')
   });
 
   Then('the response will contain the vendor\'s record for the author',  () => {
-    expect(author).not.to.be.undefined
-    console.log(author)
-    expect(author).to.include.keys('vendorId','name')
+    expect(author).not.to.be.undefined  
+    expect(author).to.include.keys('vendorId','name','link','about','image')
   });
