@@ -28,9 +28,9 @@ class GoodReadsAPI {
           throw new Error('connection error')
         }
       })
-      .then(doc => xml2js(doc, {compact:true}))
-      // .then(json => {console.log(json); return json})
-      .then(json => this.parseResponse('/api/author_url', json))
+      .then(doc    => xml2js(doc, {compact:true}))
+      .then(json   => this.extractAuthorJson(json))
+      .then(json   => this.parseAuthor(json, 'search'))
       .then(author => resolve(author))
       .catch(e => reject(e))
       
@@ -48,27 +48,12 @@ class GoodReadsAPI {
           throw new Error('connection error')
         }
       })
-      .then(doc => xml2js(doc, {compact:true})) 
-      // .then(json => {console.log(json); return json})
-      .then(json => this.parseResponse('/author/show', json))
+      .then(doc    => xml2js(doc, {compact:true})) 
+      .then(json   => this.extractAuthorJson(json))
+      .then(json   => this.parseAuthor(json, 'show_author'))
       .then(author => resolve(author))
       .catch(e => reject(e))
     })
-  }
-  
-  parseResponse(endpoint, json){
-    let method
-    switch(endpoint){
-      
-      case '/api/author_url':
-      case '/author/show':
-        const authorJson = this.extractAuthorJson(json)
-        console.log(authorJson)
-        return this.parseAuthor(authorJson, (endpoint=='/api/author_url' ? 'search':'show_author'))
-
-      default:
-        return null
-    }
   }
 
   
