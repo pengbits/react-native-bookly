@@ -24,7 +24,7 @@ const create = async (req,res,next) => {
 }
 
 const update = async (req,res) => {
-  const book   = await findbook(req.params)
+  const book     = await findbook(req.params)
   const response = await Object.assign(book, req.body).save()
   respondWith(res, {book}) // doesn't include changed attributes
 }
@@ -39,6 +39,22 @@ const remove = async (req,res) => {
     success: response.ok,
     book
   })
+}
+
+const favorite = async(req,res) => {
+  let success
+  const book     = await findbook(req.params)
+  const response = await Object.assign(book, {
+    favorite:true
+  }).save()
+
+  respondWith(res, {book})
+}
+
+const favorites = async(req,res) => {
+  const books = await Book.find({favorite:true})
+  console.log(`found ${books.length} favorited books`)
+  respondWith(res, {books})
 }
 
 // helpers
@@ -71,6 +87,7 @@ export default {
   get     : dispatch(get),
   create  : dispatch(create),
   remove  : dispatch(remove),
-  update  : dispatch(update)
-
+  update  : dispatch(update),
+  favorite  : dispatch(favorite),
+  favorites : dispatch(favorites)
 }

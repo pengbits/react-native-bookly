@@ -10,6 +10,8 @@ let book
 let expectedBook
 let deletedBook
 let bookEdits
+let favoritedBook
+let favorites
 
 SeedModel('Book')
 
@@ -135,10 +137,19 @@ SeedModel('Book')
 
   // POST /books/9226/favorite
   Given('I have a book I would like to favorite', function () {
+    favoritedBook = withMockBook()
   });
 
-  When('I visit the favorite book endpoint', function () {
-  });
+  When('I visit the favorite book endpoint', async () => {
+    book = await fetch(`/books/${favoritedBook.vendorId}/favorite`,{
+      method: 'PUT',
+    }).then(xhr => xhr.book)
+  })
 
-  Then('my book will be added to the list of favorites', function () {
+  Then('my book will be added to the list of favorites', async () => {
+    // in response:
+    expect(book.favorite).to.be.true
+    // in full list
+    favorites = await fetch(`/books/favorites`).then(xhr => xhr.books)
+    expect(favorites).to.not.be.empty
   });
