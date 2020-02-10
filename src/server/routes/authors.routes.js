@@ -10,6 +10,7 @@ export default () => {
   api.put('/:id',     controller.update)
   api.post('/'  ,     controller.create)
   api.delete('/:id',  controller.remove)
+  api.get('/:id/vendor', controller.getFromVendor)
   
   return api
 }

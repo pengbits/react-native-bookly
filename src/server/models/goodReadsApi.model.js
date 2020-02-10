@@ -11,8 +11,7 @@ class GoodReadsAPI {
     this.api_key      = config[`${ns}key`]
     this.user_profile = config[`${ns}user_profile`]
     this.host         = config[`${ns}host`]
-    this.api_root     = config[`${ns}api_root`]
-    this.base         = `${this.host}${this.api_root}`
+    this.base         = `${this.host}`
   }
   
   search(q){
@@ -20,43 +19,67 @@ class GoodReadsAPI {
 
       if(!q) throw new Error('must provide a query')
       const query = encodeURIComponent(q)
-      const url  = `${this.base}/author_url/${query}?key=${this.api_key}`
+      const url  = `${this.base}/api/author_url/${query}?key=${this.api_key}`
       console.log(`|grapi| connecting to ${url}`)
       fetch(url).then(xhr => {
         if(xhr.status = 200) {
           return xhr.text()
         } else {
-          throw new Error('connection erro')
+          throw new Error('connection error')
         }
       })
-      .then(doc => xml2js(doc, {compact:true}))
-      .then(json => this.parseResponse('/api/author_url', json))
+      .then(doc    => xml2js(doc, {compact:true}))
+      .then(json   => this.extractAuthorJson(json))
+      .then(json   => this.parseAuthor(json, 'search'))
       .then(author => resolve(author))
       .catch(e => reject(e))
       
     })
   }
   
-  parseResponse(endpoint, json){
-    switch(endpoint){
-      case '/api/author_url':
-        if(!json.GoodreadsResponse || !json.GoodreadsResponse.author) {
-          throw new Error('bad json response in parse')
-        } 
-        
-        return this.parseAuthor(getProp(['GoodreadsResponse','author'], json))
-        
-      default:
-        return null
-    }
+  showAuthor({id}){
+    return new Promise((resolve,reject) => {
+      const url  = `${this.base}/author/show/${id}?format=xml&key=${this.api_key}`
+      console.log(`|grapi| connecting to ${url}`)
+      fetch(url).then(xhr => {
+        if(xhr.status = 200) {
+          return xhr.text()
+        } else {
+          throw new Error('connection error')
+        }
+      })
+      .then(doc    => xml2js(doc, {compact:true})) 
+      .then(json   => this.extractAuthorJson(json))
+      .then(json   => this.parseAuthor(json, 'show_author'))
+      .then(author => resolve(author))
+      .catch(e => reject(e))
+    })
   }
 
   
-  parseAuthor(json) {
-    return {
+  parseAuthor(json, method) {
+    if (method == 'search') return {
+      name      : json.name._cdata,
       vendorId  : json._attributes.id,
-      name      : json.name._cdata
+      link      : json.link._text
     }
+    
+    if( method == 'show_author') return {
+      name      : json.name._text,
+      vendorId  : json.id._text,
+      link      : json.link._cdata,
+      image     : json.large_image_url._cdata,
+      about     : json.about._cdata
+    }
+    
+    return {}
+  }
+
+  extractAuthorJson(json){
+    const author = getProp(['GoodreadsResponse','author'], json)
+    if(!author) throw new Error('bad json response')
+
+    return author
   }
 }
 

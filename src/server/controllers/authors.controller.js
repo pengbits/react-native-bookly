@@ -42,6 +42,16 @@ const remove = async (req,res) => {
   })
 }
 
+const getFromVendor = async (req,res) => {
+  // what to do w/ a request for an author not in the db?
+  // should we add it to store?
+  // const localAuthor  = await findAuthor(req.params)
+  //   .catch(e => )
+  const {id} = req.params
+  const author = await GoodReadsAPI.showAuthor({id})
+  respondWith(res, {author})
+}
+
 // helpers
 // ----------------------------------------------------------------------------
 const findAuthor = ({id}) => {
@@ -73,6 +83,7 @@ export default {
   search  : dispatch(search),
   create  : dispatch(create),
   remove  : dispatch(remove),
-  update  : dispatch(update)
+  update  : dispatch(update),
+  getFromVendor : dispatch(getFromVendor)
 
 }

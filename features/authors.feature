@@ -36,3 +36,7 @@ Scenario: Delete an Author
      When I visit the search endpoint with the name as the query and type='author'
      Then the response will contain a name and id for the author   
      
+  Scenario: Get an Author from Vendor
+    Given I have an author's vendorId
+    When I visit the get-vendor-author endpoint
+    Then the response will contain the vendor's record for the author
