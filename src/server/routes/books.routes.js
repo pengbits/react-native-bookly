@@ -12,6 +12,7 @@ export default () => {
   api.delete('/:id',          controller.remove)
   api.put('/:id/favorite',    controller.favorite) // favoriting is just a micro update, must be a PUT
   api.put('/:id/unfavorite',  controller.unfavorite)
+  api.get('/:id/vendor',      controller.getFromVendor)
   
   return api
 }

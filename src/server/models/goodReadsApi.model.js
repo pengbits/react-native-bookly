@@ -55,6 +55,14 @@ class GoodReadsAPI {
       .catch(e => reject(e))
     })
   }
+  
+  showBook({id}) {
+    return new Promise((resolve,reject) => {
+      const url  = `${this.base}/book/show/${id}?format=xml&key=${this.api_key}`
+      console.log(`|grapi| connecting to ${url}`)
+      resolve({book:{name:'wibble'}})
+    })
+  }
 
   
   parseAuthor(json, method) {

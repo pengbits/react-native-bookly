@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import Book from '../models/book.model'
-
+import GoodReadsAPI from '../models/goodreadsApi.model'
 // actions
 // ----------------------------------------------------------------------------
 const list = async (req,res) => {
@@ -42,12 +42,17 @@ const remove = async (req,res) => {
 }
 
 
+const getFromVendor = async(req,res) => {
+  const {id} = req.params
+  const book = await GoodReadsAPI.showBook({id})
+  respondWith(res, {book})
+}
+
 // GET /books/favorites 
 const favorites = async(req,res) => {
   const books = await Book.find({favorite:true})
   respondWith(res, {books})
 }
-
 
 // PUT books/98787/favorite
 const favorite = async(req,res) => {
@@ -101,5 +106,6 @@ export default {
   update      : dispatch(update),
   favorites   : dispatch(favorites),
   favorite    : dispatch(favorite),
-  unfavorite  : dispatch(unfavorite)
+  unfavorite  : dispatch(unfavorite),
+  getFromVendor : dispatch(getFromVendor)
 }
