@@ -64,7 +64,6 @@ const unfavorite = async(req,res) => {
 const setIsFavorite = async(req,attrs) => {
   const book = await findbook(req.params)
   const response = await Object.assign(book, attrs).save()
-  console.log(response)
   return book
 }
 
