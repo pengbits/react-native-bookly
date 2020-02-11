@@ -34,5 +34,8 @@ Scenario: Unfavorite a Book
   When I visit the unfavorite book endpoint
   Then my book will be removed from the list of favorites
 
-   
-   
+Scenario: Get Related Books
+  Given I have an book's vendorId
+   When I fetch the get-vendor-book endpoint
+   Then the response will contain the vendor's record for the book
+    And there will be some related books in the response
