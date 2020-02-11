@@ -10,6 +10,9 @@ let book
 let expectedBook
 let deletedBook
 let bookEdits
+let favoritedBook
+let unfavoritedBook
+let favorites
 
 SeedModel('Book')
 
@@ -131,3 +134,44 @@ SeedModel('Book')
     })
     expect(book).to.include(bookEdits)
   })
+
+
+  // PUT /books/9226/favorite
+  Given('I have a book I would like to favorite', function () {
+    favoritedBook = withMockBook()
+  });
+
+  When('I visit the favorite book endpoint', async () => {
+    book = await fetch(`/books/${favoritedBook.vendorId}/favorite`,{
+      method: 'PUT',
+    }).then(xhr => xhr.book)
+  })
+
+  Then('my book will be added to the list of favorites', async () => {
+    // in response:
+    expect(book.favorite).to.be.true
+    // in full list
+    favorites = await fetch(`/books/favorites`).then(xhr => xhr.books)
+    expect(favorites.filter(b => b.vendorId == favoritedBook.vendorId)).not.to.be.empty
+  });
+  
+  
+  // PUT /books/9226/unfavorite
+  Given('I have a book I would like to unfavorite', function () {
+    unfavoritedBook = withMockBook()
+  });
+
+  When('I visit the unfavorite book endpoint', async () => {
+    book = await fetch(`/books/${unfavoritedBook.vendorId}/unfavorite`,{
+      method: 'PUT',
+    }).then(xhr => xhr.book)
+  })
+
+  Then('my book will be removed from the list of favorites', async () => {
+    // in response:
+    expect(book.favorite).to.be.false
+    // in full list
+    favorites = await fetch(`/books/favorites`).then(xhr => xhr.books)
+    expect(favorites.filter(b => b.vendorId == unfavoritedBook.vendorId)).to.be.empty
+  });
+
