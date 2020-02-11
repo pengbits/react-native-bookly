@@ -149,10 +149,10 @@ SeedModel('Book')
 
   Then('my book will be added to the list of favorites', async () => {
     // in response:
-    // expect(book.favorite).to.be.true
+    expect(book.favorite).to.be.true
     // in full list
     favorites = await fetch(`/books/favorites`).then(xhr => xhr.books)
-    // expect(favorites.filter(b => b.vendorId == favoritedBook.vendorId)).not.to.be.empty
+    expect(favorites.filter(b => b.vendorId == favoritedBook.vendorId)).not.to.be.empty
   });
   
   
