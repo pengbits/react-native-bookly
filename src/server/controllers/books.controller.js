@@ -51,6 +51,7 @@ const getFromVendor = async(req,res) => {
 // GET /books/favorites 
 const favorites = async(req,res) => {
   const books = await Book.find({favorite:true})
+  console.log('found '+books.length +' favorites')
   respondWith(res, {books})
 }
 

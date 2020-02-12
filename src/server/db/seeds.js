@@ -23,7 +23,7 @@ const seedable_mocks = {
 export const SeedModel = async (key) => {
   const model = seedable_models[key]
   if(!model) throw new Error('couldn\'t seed '+key)
-  
+  console.log(`SeedModel(${key})`)
   const {modelName}   = model
   const instanceName  = modelName.toLowerCase()
   
