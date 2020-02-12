@@ -55,6 +55,24 @@ class GoodReadsAPI {
       .catch(e => reject(e))
     })
   }
+  
+  showBook({id}) {
+    return new Promise((resolve,reject) => {
+      const url  = `${this.base}/book/show/${id}?format=xml&key=${this.api_key}`
+      console.log(`|grapi| connecting to ${url}`)
+      fetch(url).then(xhr => {
+        if(xhr.status = 200) {
+          return xhr.text()
+        } else {
+          throw new Error('connection error')
+        }
+      })
+      .then(doc    => xml2js(doc, {compact:true})) 
+      .then(json   => this.extractBookJson(json))
+      .then(json   => this.parseBook(json, 'show_book'))
+      .then(author => resolve(author))
+    })
+  }
 
   
   parseAuthor(json, method) {
@@ -75,11 +93,38 @@ class GoodReadsAPI {
     return {}
   }
 
+  parseBook(json, method){
+    return {
+      title  : json.title._text,
+      vendorId : json.id._text,
+      author : {
+        name      : getProp(['authors','author','name','_text'], json),
+        vendorId  : getProp(['authors','author','id',  '_text'], json)
+      },
+      image: json.image_url._text || json.image_url._cdata,
+      similar_books :  (getProp(['similar_books','book'], json) || []).map(b => {
+        return {
+          title     : b.title._text || b.title._cdata,
+          vendorId  : b.id._text,
+          image     : b.image_url._cdata
+        }
+      })
+    }
+  }
+
   extractAuthorJson(json){
     const author = getProp(['GoodreadsResponse','author'], json)
     if(!author) throw new Error('bad json response')
 
     return author
+  }
+  
+  extractBookJson(json){
+    const book = getProp(['GoodreadsResponse','book'], json)
+    if(!book) throw new Error('bad json response')
+
+
+    return book
   }
 }
 

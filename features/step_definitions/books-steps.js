@@ -175,3 +175,23 @@ SeedModel('Book')
     expect(favorites.filter(b => b.vendorId == unfavoritedBook.vendorId)).to.be.empty
   });
 
+
+  let bookId
+  Given('I have an book\'s vendorId', function () {
+    bookId = 13586743 // 'one last thing'
+  })
+
+  When('I fetch the get-vendor-book endpoint', async () => {
+    book = await fetch(`/books/${bookId}/vendor`).then(xhr => xhr.book)
+  })
+
+  Then('the response will contain the vendor\'s record for the book', function () {
+    expect(book).to.include.keys(['title','author','vendorId','similar_books'])
+  })
+
+  Then('there will be some related books in the response', function () {
+    expect(book.similar_books).to.not.be.empty
+  })
+
+
+
