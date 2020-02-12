@@ -96,11 +96,19 @@ class GoodReadsAPI {
   parseBook(json, method){
     return {
       title  : json.title._text,
+      vendorId : json.id._text,
       author : {
         name      : getProp(['authors','author','name','_text'], json),
         vendorId  : getProp(['authors','author','id',  '_text'], json)
       },
-      similar_books : json.similar_books.length
+      image: json.image_url._text || json.image_url._cdata,
+      similar_books :  (getProp(['similar_books','book'], json) || []).map(b => {
+        return {
+          title     : b.title._text || b.title._cdata,
+          vendorId  : b.id._text,
+          image     : b.image_url._cdata
+        }
+      })
     }
   }
 
