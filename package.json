@@ -1,16 +1,23 @@
 {
   "name": "bookly",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "simple app for managing favorite authors + books",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
-    "test" : "nodemon --exec node_modules/cucumber/bin/cucumber-js --require-module @babel/register",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "api:start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
+    "api:test": "nodemon --exec node_modules/cucumber/bin/cucumber-js --require-module @babel/register",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "react": "16.9.0",
+    "react-native": "0.61.5"
+  },
+  "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
@@ -27,6 +34,15 @@
     "mongodb": "^3.4.1",
     "mongoose": "^5.8.6",
     "nodemon": "^2.0.2",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.9.0"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
