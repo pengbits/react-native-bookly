@@ -60,7 +60,17 @@ class GoodReadsAPI {
     return new Promise((resolve,reject) => {
       const url  = `${this.base}/book/show/${id}?format=xml&key=${this.api_key}`
       console.log(`|grapi| connecting to ${url}`)
-      resolve({book:{name:'wibble'}})
+      fetch(url).then(xhr => {
+        if(xhr.status = 200) {
+          return xhr.text()
+        } else {
+          throw new Error('connection error')
+        }
+      })
+      .then(doc    => xml2js(doc, {compact:true})) 
+      .then(json   => this.extractBookJson(json))
+      .then(json   => this.parseBook(json, 'show_book'))
+      .then(author => resolve(author))
     })
   }
 
@@ -83,11 +93,30 @@ class GoodReadsAPI {
     return {}
   }
 
+  parseBook(json, method){
+    return {
+      title  : json.title._text,
+      author : {
+        name      : getProp(['authors','author','name','_text'], json),
+        vendorId  : getProp(['authors','author','id',  '_text'], json)
+      },
+      similar_books : json.similar_books.length
+    }
+  }
+
   extractAuthorJson(json){
     const author = getProp(['GoodreadsResponse','author'], json)
     if(!author) throw new Error('bad json response')
 
     return author
+  }
+  
+  extractBookJson(json){
+    const book = getProp(['GoodreadsResponse','book'], json)
+    if(!book) throw new Error('bad json response')
+
+
+    return book
   }
 }
 

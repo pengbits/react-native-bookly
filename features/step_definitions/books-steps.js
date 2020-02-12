@@ -182,10 +182,11 @@ SeedModel('Book')
   })
 
   When('I fetch the get-vendor-book endpoint', async () => {
-    const book = await fetch(`/books/${bookId}/vendor`).then(xhr => xhr)
+    book = await fetch(`/books/${bookId}/vendor`).then(xhr => xhr)
   })
 
   Then('the response will contain the vendor\'s record for the book', function () {
+    console.log(book)
   })
 
   Then('there will be some related books in the response', function () {
