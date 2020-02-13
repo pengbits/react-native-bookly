@@ -23,7 +23,7 @@ const seedable_mocks = {
 export const SeedModel = async (key) => {
   const model = seedable_models[key]
   if(!model) throw new Error('couldn\'t seed '+key)
-  //  console.log(`|seeds| SeedModel(${key})`)
+  // console.log(`|seeds| SeedModel(${key})`)
   const {modelName}   = model
   const instanceName  = modelName.toLowerCase()
   
@@ -41,7 +41,7 @@ export const SeedModel = async (key) => {
     .then(() => {
       return model.insertMany(fixtures)
     })
-    //.then(docs => console.log(`|seeds| success!`))
+    //.then(docs => // console.log(`|seeds| success!`))
     //.catch(err => console.log(err))
   
 }

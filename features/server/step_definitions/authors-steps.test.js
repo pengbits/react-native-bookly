@@ -10,17 +10,19 @@ let deletedAuthor
 let authorEdits
 let authorQuery 
 
-beforeAll(function() {
-  return SeedModel('Author').then(xhr => console.log('Seeded db with author data'))
+beforeAll(async() => {
+  await SeedModel('Author').then(xhr => console.log('Seeded db with author data'))
 })
 
+const withMockAuthor = () => {
+  const {length}     = GetAuthorsMock.authors
+  const i            = Math.floor(Math.random() * length)
+  expectedAuthor     = GetAuthorsMock.authors[i]
+  return expectedAuthor
+}
+
 defineFeature(loadFeature('./features/server/authors.feature'), test => {
-  const withMockAuthor = () => {
-    const {length}     = GetAuthorsMock.authors
-    const i            = Math.floor(Math.random() * length)
-    expectedAuthor     = GetAuthorsMock.authors[i]
-    return expectedAuthor
-  }
+
   
         
   // GET /authors

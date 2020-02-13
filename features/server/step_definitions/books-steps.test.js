@@ -12,8 +12,8 @@ let favoritedBook
 let unfavoritedBook
 let favorites
 
-beforeAll(function() {
-  return SeedModel('Book').then(xhr => console.log('Seeded db with books data'))
+beforeAll(async () => {
+  await SeedModel('Book').then(xhr => console.log('Seeded db with books data'))
 })
 
 defineFeature(loadFeature('./features/server/books.feature'), test => {
