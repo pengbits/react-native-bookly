@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+import AuthorList from './AuthorList'
 import {
   View,
   Text  ,
@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 
 
-const AuthorList = (({authors}) => <View>
-  {authors.map((author,i) => <Text key={i}>{author}</Text>)}
-</View>)
-
 export default class MainView extends Component {
+  componentDidMount(){
+    this.fetchAuthors()
+  }
+  
   render(){
     const {
       authors, 
@@ -20,11 +20,7 @@ export default class MainView extends Component {
     } = this.props
     
     return (<View>
-      <Text>{loading ? 'loading...':''}</Text>
-      <AuthorList authors={authors} />
-      <Button 
-        onPress={this.fetchAuthors.bind(this)}
-        title="Get authors" />
+      <AuthorList authors={authors} style={{}}/>
     </View>)
   }
   
