@@ -7,7 +7,7 @@ import getAuthorsMock from '../../../mocks/get-authors.mock'
 
 // reducers
 import rootReducer from '../../../src/client/redux/index'
-import { getAuthors, GET_AUTHORS} from '../../../src/client/redux/app'
+import { getAuthors, GET_AUTHORS} from '../../../src/client/redux/authors'
 
 defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
@@ -42,11 +42,11 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
         `${GET_AUTHORS}_PENDING`,
         `${GET_AUTHORS}_FULFILLED`
       ])
-      expect(afterState.app.loading).toBe(false)
+      expect(afterState.authors.loading).toBe(false)
     });
 
     then('there will be authors in the list', () => {
-      expect(afterState.app.authors.length).toBeGreaterThan(0)
+      expect(afterState.authors.list.length).toBeGreaterThan(0)
     })
   })
 })

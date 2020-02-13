@@ -17,12 +17,11 @@ export const getAuthors = function(){
 // reducers
 const initialState = {
   loading: false,
-  books: [],
-  authors:[]
+  list:[]
 }
 
 
-export const app = (state=initialState, action={}) => {
+export const authors = (state=initialState, action={}) => {
   switch(action.type){
     
     case `${GET_AUTHORS}_PENDING`:
@@ -35,7 +34,7 @@ export const app = (state=initialState, action={}) => {
       return {
         ...state,
         loading: false,
-        authors: action.payload.slice(0)
+        list: action.payload.slice(0)
       }
       
     default:
@@ -43,4 +42,4 @@ export const app = (state=initialState, action={}) => {
   }
 }
 
-export default app
+export default authors

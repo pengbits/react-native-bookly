@@ -1,11 +1,11 @@
 import { connect, Provider } from 'react-redux'
 import MainView from '../components/MainView'
-import {getAuthors} from '../redux/app'
+import {getAuthors} from '../redux/authors'
 
 const mapStateToProps = function(state){
   return {
-    authors: state.app.authors || [],
-    loading: state.app.loading
+    authors: state.authors.list,
+    loading: state.loading
   }
 }
 

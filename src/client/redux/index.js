@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import { app } from './app'
+import { authors } from './authors'
 
 export const indexReducer = combineReducers({
-  app
+  authors
 })
 
 export default indexReducer
