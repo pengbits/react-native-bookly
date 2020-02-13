@@ -11,8 +11,15 @@ let expectedAuthor
 let deletedAuthor
 let authorEdits
 let authorQuery 
-
-SeedModel('Author')
+let seeded = false
+Before(() => {
+  if(seeded) return
+  
+  return SeedModel('Author').then(() => {
+    console.log('seeded!');
+    seeded = true
+  })
+})
 
   const withMockAuthor = () => {
     const {length}     = GetAuthorsMock.authors
@@ -176,3 +183,4 @@ SeedModel('Author')
     expect(author).not.to.be.undefined  
     expect(author).to.include.keys('vendorId','name','link','about','image')
   });
+  
