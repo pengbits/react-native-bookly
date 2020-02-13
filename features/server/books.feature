@@ -23,7 +23,14 @@ Scenario: Delete a Book
    When I fetch the delete book endpoint
     And I fetch the books endpoint
    Then my book will not be in the list
-   
+ 
+Scenario: Update a Book
+ Given there are books in the database
+  When I fetch the book details endpoint
+   And I make changes to the book
+   And I send the changes to the book details endpoint
+  Then the book contains my changes
+ 
 Scenario: Favorite a Book
   Given I have a book I would like to favorite
    When I visit the favorite book endpoint

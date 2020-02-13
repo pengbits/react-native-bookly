@@ -10,7 +10,7 @@ let deletedAuthor
 let authorEdits
 let authorQuery 
 
-beforeAll(() => {
+beforeAll(function() {
   return SeedModel('Author').then(xhr => console.log('Seeded db with author data'))
 })
 
