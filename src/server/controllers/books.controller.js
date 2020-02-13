@@ -24,9 +24,9 @@ const create = async (req,res,next) => {
 }
 
 const update = async (req,res) => {
-  const book     = await findbook(req.params)
+  const book  = await findbook(req.params)
   const response = await Object.assign(book, req.body).save()
-  respondWith(res, {book}) // doesn't include changed attributes
+  respondWith(res, {book}) // return changed model optimistically
 }
 
 const remove = async (req,res) => {

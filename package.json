@@ -9,8 +9,7 @@
     "start": "react-native start",
     "lint": "eslint .",
     "api:start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
-    "test": "node_modules/cucumber/bin/cucumber-js --require-module @babel/register --exit",
-    "app:test": "jest --watch",
+    "test": "jest --watch",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {
