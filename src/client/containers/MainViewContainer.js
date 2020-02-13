@@ -3,7 +3,6 @@ import MainView from '../components/MainView'
 import {getAuthors} from '../redux/app'
 
 const mapStateToProps = function(state){
-  console.log(state)
   return {
     authors: state.app.authors || [],
     loading: state.app.loading

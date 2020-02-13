@@ -5,19 +5,16 @@ export const GET_AUTHORS = 'app/GET_AUTHORS'
 
 // action creators
 export const getAuthors = function(){
-  return function(dispatch, getState) {
-    dispatch({
-      type: `${GET_AUTHORS}_PENDING`
-    })
-    
-    setTimeout(function(){
-      dispatch({
-        type: `${GET_AUTHORS}_FULFILLED`
+  return {
+    type:     GET_AUTHORS,
+    payload:  new Promise((resolve,reject) => {
+      setTimeout(resolve, 0, {
+        success: true,
+        data: ['William Gibson','Tommy Orange','Zadie Smith']
       })
-    }, 250)
+    }).then(xhr => xhr.data)
   }
-}//createAction(GET_AUTHORS)
-
+}
 // reducers
 const initialState = {
   loading: false,
@@ -39,7 +36,7 @@ export const app = (state=initialState, action={}) => {
       return {
         ...state,
         loading: false,
-        authors: ['William Gibson','Tommy Orange','Zadie Smith']
+        authors: action.payload.slice(0)
       }
       
     default:

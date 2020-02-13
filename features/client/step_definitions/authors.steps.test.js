@@ -10,7 +10,8 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   test('AuthorList', ({ given, when, and, then }) => {
     let store,
       beforeState,
-      afterState
+      afterState,
+      json
     ;
     
     given('there are authors in the database', () => {
@@ -23,17 +24,21 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
     
     then('there will be a fetch to the server', () => {
-      store.dispatch(getAuthors())
+      return store.dispatch(getAuthors()).then(() => {
+        afterState = resultingState(store, rootReducer)
+      })
     })
 
     when('it loads', () => {
-      afterState = resultingState(store, rootReducer)
+      expectActions(store, [
+        `${GET_AUTHORS}_PENDING`,
+        `${GET_AUTHORS}_FULFILLED`
+      ])
+      expect(afterState.app.loading).toBe(false)
     });
 
     then('there will be authors in the list', () => {
-      expectActions(store, [
-        GET_AUTHORS
-      ])
+      expect(afterState.app.authors.length).toBeGreaterThan(0)
     })
   })
 })
