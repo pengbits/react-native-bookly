@@ -1,11 +1,11 @@
-//import promiseMiddleware from 'redux-promise-middleware'
-//import thunk from 'redux-thunk'
+import promiseMiddleware from 'redux-promise-middleware'
+import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 
-// const middlewares = [
-//   promiseMiddleware(),
-//   thunk.withExtraArgument({'isRootReducer': false})
-// ]
+const middlewares = [
+  promiseMiddleware(),
+  thunk.withExtraArgument({'isRootReducer': false})
+]
 
 const mockStore = configureStore([])//middlewares)
 export default mockStore

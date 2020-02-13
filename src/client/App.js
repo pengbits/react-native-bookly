@@ -1,7 +1,16 @@
+// libs
 import React from 'react';
-import { createStore } from 'redux'
+
+//redux
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+// redux-async
+import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware'
+
+// app
 import rootReducer from './redux'
-import { connect, Provider } from 'react-redux'
 
 import {
   SafeAreaView,
@@ -11,29 +20,22 @@ import {
   Text,
 } from 'react-native';
 
-const store = createStore(rootReducer)
-
-const MainView = ({authors, loading}) => {
-  return (<View>
-    <Text>found  {authors.length} authors {loading ? '...' : ''}</Text>
-  </View>)
-}
-
-const MainViewContainer = connect(
-  function(state){
-    return {
-      authors: state.app.authors || [],
-      loading: state.app.loading
-    }
-  }
-)(MainView)
+import MainView from './containers/MainViewContainer'
+const initialState = rootReducer()
+const store = createStore(
+  rootReducer, 
+  initialState, 
+  applyMiddleware(
+    thunk
+  )
+)
 
 const App: () => React$Node = () => {
   return (
     <>
       <Provider store={store}>
         <SafeAreaView>
-          <MainViewContainer style={styles.container} />
+          <MainView style={styles.container} />
         </SafeAreaView>
       </Provider>
     </>
