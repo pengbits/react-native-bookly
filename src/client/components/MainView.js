@@ -8,6 +8,10 @@ import {
 } from 'react-native';
 
 
+const AuthorList = (({authors}) => <View>
+  {authors.map((author,i) => <Text key={i}>{author}</Text>)}
+</View>)
+
 export default class MainView extends Component {
   render(){
     const {
@@ -16,7 +20,8 @@ export default class MainView extends Component {
     } = this.props
     
     return (<View>
-      <Text>Found  {authors.length} authors {loading ? '...' : ''}</Text>
+      <Text>{loading ? 'loading...':''}</Text>
+      <AuthorList authors={authors} />
       <Button 
         onPress={this.fetchAuthors.bind(this)}
         title="Get authors" />

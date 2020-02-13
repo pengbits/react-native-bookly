@@ -8,7 +8,7 @@ export const getAuthors = function(){
   return {
     type:     GET_AUTHORS,
     payload:  new Promise((resolve,reject) => {
-      setTimeout(resolve, 0, {
+      setTimeout(resolve, 500, {
         success: true,
         data: ['William Gibson','Tommy Orange','Zadie Smith']
       })
@@ -26,7 +26,7 @@ const initialState = {
 export const app = (state=initialState, action={}) => {
   switch(action.type){
     
-    case GET_AUTHORS:
+    case `${GET_AUTHORS}_PENDING`:
       return {
         ...state,
         loading:true
