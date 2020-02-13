@@ -1,12 +1,19 @@
+import moxios from 'moxios'
 import {defineFeature, loadFeature} from 'jest-cucumber';
-import mockStore, { expectActions, resultingState } from  '../../../src/client/mockStore'
 
+// mocks
+import mockStore, { expectActions, resultingState, respondWithMockResponse } from  '../../../src/client/mockStore'
+import getAuthorsMock from '../../../mocks/get-authors.mock'
+
+// reducers
 import rootReducer from '../../../src/client/redux/index'
-import {
-  getAuthors, GET_AUTHORS
-} from '../../../src/client/redux/app'
+import { getAuthors, GET_AUTHORS} from '../../../src/client/redux/app'
 
 defineFeature(loadFeature('./features/client/authors.feature'), test => {
+  
+  beforeEach(function(){ moxios.install()   })
+   afterEach(function(){ moxios.uninstall() })
+   
   test('AuthorList', ({ given, when, and, then }) => {
     let store,
       beforeState,
@@ -15,7 +22,7 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     ;
     
     given('there are authors in the database', () => {
-      //
+      expect(getAuthorsMock.authors.length).toBeGreaterThan(1)
     });
 
     when('I render the AuthorList', () => {
@@ -24,6 +31,7 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
     
     then('there will be a fetch to the server', () => {
+      respondWithMockResponse(moxios, getAuthorsMock)
       return store.dispatch(getAuthors()).then(() => {
         afterState = resultingState(store, rootReducer)
       })

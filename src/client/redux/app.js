@@ -1,4 +1,5 @@
 import {createAction} from 'redux-actions'
+import axios from 'axios'
 
 // constants
 export const GET_AUTHORS = 'app/GET_AUTHORS'
@@ -6,15 +7,13 @@ export const GET_AUTHORS = 'app/GET_AUTHORS'
 // action creators
 export const getAuthors = function(){
   return {
-    type:     GET_AUTHORS,
-    payload:  new Promise((resolve,reject) => {
-      setTimeout(resolve, 500, {
-        success: true,
-        data: ['William Gibson','Tommy Orange','Zadie Smith']
-      })
-    }).then(xhr => xhr.data)
+    type    : GET_AUTHORS,
+    payload : axios.get('http://localhost:3000/authors')
+      .then(xhr => xhr.data.authors)
   }
 }
+
+
 // reducers
 const initialState = {
   loading: false,
