@@ -1,7 +1,4 @@
 import {defineFeature, loadFeature} from 'jest-cucumber';
-import {should,expect} from 'chai'
-const assert = require('assert');
-// const { Before, After, given, when, then } = require('cucumber');
 import GetAuthorsMock from '../../../mocks/get-authors.mock'
 import fetch from './utils/fetch'
 import {SeedModel} from '../../../src/server/db/seeds'
@@ -29,7 +26,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
   // GET /authors
   test('Get Authors', ({ given, when, and, then }) => {
     given('there are authors in the database', function () {
-      expect(GetAuthorsMock.authors).not.to.be.empty // not proof of anything really, 
+      expect(GetAuthorsMock.authors.length).toBeGreaterThan(0) // not proof of anything really, 
     })
 
     when('I fetch the authors endpoint', async () =>  {
@@ -40,7 +37,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
     })
 
     then('the response will contain a list of authors', function () {
-      expect(authors).not.to.be.empty
+      expect(authors.length).toBeGreaterThan(0)
     })
   })
   
@@ -59,8 +56,8 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
     })
 
     then('the response will contain details about the author', function () {
-      expect(author).not.to.be.undefined
-      expect(author).to.include.keys('_id','vendorId','name','about')
+      expect(author).toBeTruthy()
+      expect(Object.keys(author)).toEqual(expect.arrayContaining(['_id','vendorId','name','about']))
     })
   })
   
@@ -100,7 +97,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
         authors = json.authors
       })
       const matches = authors.filter(a => a.vendorId == expectedAuthor.vendorId)
-      expect(matches.length).to.equal(1)
+      expect(matches).toHaveLength(1)
     })
   })
   
@@ -111,7 +108,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
     
     given('I have an author I want to delete', () => {
       withMockAuthor()
-      expect(expectedAuthor.vendorId).to.be.a('string')
+      expect(typeof expectedAuthor.vendorId).toBe('string')
     })
 
     when('I fetch the delete author endpoint', async () => {
@@ -134,7 +131,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
       const matches = authors.filter((a) => {
         return a.vendorId == deletedAuthor.vendorId
       })
-      expect(matches).to.be.empty
+      expect(matches).toHaveLength(0)
     })
   })
   
@@ -176,7 +173,7 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
       await fetch(`/authors/${expectedAuthor.vendorId}`).then((json) => {
        author = json.author
       })
-      expect(author).to.include(authorEdits)
+      expect(author).toEqual(expect.objectContaining(authorEdits))
     })
   })
  
@@ -195,13 +192,13 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
       })
       .then(xhr => {
         author = xhr.author
-        expect(author.name.toLowerCase()).to.match(new RegExp(authorQuery.toLowerCase()))    
+        expect(author.name.toLowerCase()).toMatch(new RegExp(authorQuery.toLowerCase()))    
       })
     })  
     
     then('the response will contain a name and id for the author', () => {
-      expect(author).not.to.be.undefined
-      expect(author).to.include.keys('vendorId','name','link')
+      expect(author).toBeTruthy()
+      expect(Object.keys(author)).toEqual(expect.arrayContaining(['vendorId','name','link']))
     })
   })
 
@@ -221,8 +218,8 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
     })
 
     then('the response will contain the vendor\'s record for the author',  () => {
-      expect(author).not.to.be.undefined  
-      expect(author).to.include.keys('vendorId','name','link','about','image')
+      expect(author).toBeTruthy()
+      expect(Object.keys(author)).toEqual(expect.arrayContaining(['vendorId','name','link','about','image']))
     })
   })
 })
