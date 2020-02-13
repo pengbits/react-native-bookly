@@ -16,7 +16,10 @@
   "dependencies": {
     "jest-cucumber": "^2.0.11",
     "react": "16.9.0",
-    "react-native": "0.61.5"
+    "react-native": "0.61.5",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
