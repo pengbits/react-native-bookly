@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "api:start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
     "test": "node_modules/cucumber/bin/cucumber-js --require-module @babel/register --exit",
-    "app:test": "jest",
+    "app:test": "jest --watch",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "mongoose": "^5.8.6",
     "nodemon": "^2.0.2",
     "react-test-renderer": "16.9.0",
+    "redux-mock-store": "^1.5.4",
     "xml-js": "^1.6.11"
   },
   "jest": {
