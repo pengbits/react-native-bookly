@@ -1,9 +1,9 @@
 import {should,expect} from 'chai'
 const assert = require('assert');
 const { Before, After, Given, When, Then } = require('cucumber');
-import GetBooksMock from '../../mocks/get-books.mock'
+import GetBooksMock from '../../../mocks/get-books.mock'
 import fetch from './utils/fetch'
-import {SeedModel} from '../../src/server/db/seeds'
+import {SeedModel} from '../../../src/server/db/seeds'
 
 let books
 let book
@@ -14,8 +14,7 @@ let favoritedBook
 let unfavoritedBook
 let favorites
 
-SeedModel('Book')
-
+SeedModel('Book') // .then(() => {...all test steps} ??
   const withMockBook = () => {
     const {length}  = GetBooksMock.books
     const i         = Math.floor(Math.random() * length)

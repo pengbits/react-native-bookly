@@ -10,9 +10,11 @@
     "lint": "eslint .",
     "api:start": "nodemon --exec babel-node ./src/server/index.js --watch src/server",
     "test": "node_modules/cucumber/bin/cucumber-js --require-module @babel/register --exit",
+    "app:test": "jest",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {
+    "jest-cucumber": "^2.0.11",
     "react": "16.9.0",
     "react-native": "0.61.5"
   },
