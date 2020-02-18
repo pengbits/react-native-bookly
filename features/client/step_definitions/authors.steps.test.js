@@ -4,10 +4,16 @@ import {defineFeature, loadFeature} from 'jest-cucumber';
 // mocks
 import mockStore, { expectActions, resultingState, respondWithMockResponse } from  '../../../src/client/mockStore'
 import getAuthorsMock from '../../../mocks/get-authors.mock'
+import getAuthorMock  from '../../../mocks/get-author.mock'
+
+
 
 // reducers
 import rootReducer from '../../../src/client/redux/index'
-import { getAuthors, GET_AUTHORS} from '../../../src/client/redux/authors'
+import { 
+  getAuthors, GET_AUTHORS,
+  getAuthor,  GET_AUTHOR
+} from '../../../src/client/redux/authors'
 
 defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
@@ -26,7 +32,8 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   let store,
     beforeState,
     afterState,
-    json
+    json,
+    expectedAuthor
   ;
   test('AuthorList', ({ given, when, and, then }) => {
     given('there are authors in the database', there_are_authors_in_the_db)
@@ -55,19 +62,32 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
   test('AuthorDetails', ({ given, when, then }) => {
     given('there are authors in the database', there_are_authors_in_the_db)
-    when('I render the AuthorDetails', () => getInitialState())
+    when('I render the AuthorDetails', () => {
+      getInitialState()
+      expectedAuthor = getAuthorsMock.authors[0]
+    })
 
 
     then('there will be a fetch to the server', () => {
-
+      respondWithMockResponse(moxios, getAuthorMock)
+      return store.dispatch(getAuthor({
+        vendorId: expectedAuthor.vendorId
+      })).then(() => {
+       afterState = resultingState(store, rootReducer)
+      })
     });
 
     when('it loads', () => {
-
+      expectActions(store, [
+        `${GET_AUTHOR}_PENDING`,
+        `${GET_AUTHOR}_FULFILLED`
+      ])
+      expect(afterState.authors.loading).toBe(false)
     });
 
     then('the view will be populated with some Author attributes', () => {
-
+      expect(afterState.authors.details).toEqual(expect.objectContaining(expectedAuthor))
+      // console.log(afterState.authors.details)
     });
   })
 
