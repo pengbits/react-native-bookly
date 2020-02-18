@@ -13,22 +13,25 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
   beforeEach(function(){ moxios.install()   })
    afterEach(function(){ moxios.uninstall() })
-   
-  test('AuthorList', ({ given, when, and, then }) => {
-    let store,
-      beforeState,
-      afterState,
-      json
-    ;
-    
-    given('there are authors in the database', () => {
-      expect(getAuthorsMock.authors.length).toBeGreaterThan(1)
-    });
+ 
+  const there_are_authors_in_the_db = () => {
+    expect(getAuthorsMock.authors.length).toBeGreaterThan(1)
+  }
+  
+  const getInitialState = () => {
+    store = mockStore(rootReducer())
+    beforeState = store.getState()
+  }
 
-    when('I render the AuthorList', () => {
-      store = mockStore(rootReducer())
-      beforeState = store.getState()
-    });
+  let store,
+    beforeState,
+    afterState,
+    json
+  ;
+  test('AuthorList', ({ given, when, and, then }) => {
+    given('there are authors in the database', there_are_authors_in_the_db)
+    
+    when('I render the AuthorList', () => getInitialState())
     
     then('there will be a fetch to the server', () => {
       respondWithMockResponse(moxios, getAuthorsMock)
@@ -49,4 +52,23 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
       expect(afterState.authors.list.length).toBeGreaterThan(0)
     })
   })
+  
+  test('AuthorDetails', ({ given, when, then }) => {
+    given('there are authors in the database', there_are_authors_in_the_db)
+    when('I render the AuthorDetails', () => getInitialState())
+
+
+    then('there will be a fetch to the server', () => {
+
+    });
+
+    when('it loads', () => {
+
+    });
+
+    then('the view will be populated with some Author attributes', () => {
+
+    });
+  })
+
 })
