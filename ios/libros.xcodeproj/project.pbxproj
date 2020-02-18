@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* booklyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* booklyTests.m */; };
+		00E356F31AD99517003FC87E /* librosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* librosTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,11 +15,11 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* booklyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* booklyTests.m */; };
-		2E06B6B93B718EE0666625D5 /* libPods-bookly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF27634AF8F5EE6C5EFF01C9 /* libPods-bookly.a */; };
-		54AB7AA78A302BE8CD66B5EF /* libPods-booklyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D2DA1D5A4D7FF14A016238 /* libPods-booklyTests.a */; };
-		696B817FF6C7F0E4652D2129 /* libPods-bookly-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 376B40747BE5F58D7E54590A /* libPods-bookly-tvOS.a */; };
-		F93CC1C19B2352A69E61D898 /* libPods-bookly-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F76A57F369BC315F4B64C8 /* libPods-bookly-tvOSTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* librosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* librosTests.m */; };
+		346BCCA6F9CFF3D5443D57A1 /* libPods-libros-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBD8F6BDFC33EC3701BE292 /* libPods-libros-tvOS.a */; };
+		3D42DD9F9F2257CB8D714876 /* libPods-libros.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4C5C0494E3CBCD96B62131 /* libPods-libros.a */; };
+		4A59D2081044F25E383D2161 /* libPods-libros-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8926DCDF31E6B4E62E8147F7 /* libPods-libros-tvOSTests.a */; };
+		5CD0C8BF801966EE91321454 /* libPods-librosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AA9F0CA7EDA8816DF9CF7F /* libPods-librosTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = bookly;
+			remoteInfo = libros;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "bookly-tvOS";
+			remoteInfo = "libros-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* booklyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = booklyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00BA8F3BB318731989C5E346 /* Pods-librosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-librosTests.release.xcconfig"; path = "Target Support Files/Pods-librosTests/Pods-librosTests.release.xcconfig"; sourceTree = "<group>"; };
+		00E356EE1AD99517003FC87E /* librosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = librosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* booklyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = booklyTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* bookly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookly.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = bookly/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = bookly/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* librosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = librosTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* libros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libros.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = libros/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = libros/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bookly/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = bookly/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = bookly/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* bookly-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookly-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* bookly-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bookly-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		376B40747BE5F58D7E54590A /* libPods-bookly-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bookly-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FB66F1D36E3F9486915DCA3 /* Pods-bookly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly.release.xcconfig"; path = "Target Support Files/Pods-bookly/Pods-bookly.release.xcconfig"; sourceTree = "<group>"; };
-		707A50A0BDE2C3ADBEC6E863 /* Pods-bookly-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-bookly-tvOS/Pods-bookly-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		84F5AE13A247B8389C559450 /* Pods-booklyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booklyTests.debug.xcconfig"; path = "Target Support Files/Pods-booklyTests/Pods-booklyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9383C0457B72C58EC59BAA2B /* Pods-bookly-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-bookly-tvOSTests/Pods-bookly-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		95D2DA1D5A4D7FF14A016238 /* libPods-booklyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-booklyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7F76A57F369BC315F4B64C8 /* libPods-bookly-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bookly-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C112BB3F3C34C113196B1704 /* Pods-bookly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly.debug.xcconfig"; path = "Target Support Files/Pods-bookly/Pods-bookly.debug.xcconfig"; sourceTree = "<group>"; };
-		C65A6465FC6D2402D342F607 /* Pods-bookly-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-bookly-tvOSTests/Pods-bookly-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		C98AFBB309AF9B127665E847 /* Pods-bookly-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookly-tvOS.release.xcconfig"; path = "Target Support Files/Pods-bookly-tvOS/Pods-bookly-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		CF27634AF8F5EE6C5EFF01C9 /* libPods-bookly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bookly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = libros/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = libros/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = libros/main.m; sourceTree = "<group>"; };
+		20EEA9C3E0468868047A570E /* Pods-libros-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-libros-tvOS/Pods-libros-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* libros-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "libros-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* libros-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "libros-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		353112775E1B7ECE8E360B36 /* Pods-libros-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-libros-tvOSTests/Pods-libros-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D8AF70F26EF1F883D6D9C89 /* Pods-libros-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros-tvOS.release.xcconfig"; path = "Target Support Files/Pods-libros-tvOS/Pods-libros-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		57A1E2CFEE4288155A07C758 /* Pods-libros.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros.release.xcconfig"; path = "Target Support Files/Pods-libros/Pods-libros.release.xcconfig"; sourceTree = "<group>"; };
+		5D4C5C0494E3CBCD96B62131 /* libPods-libros.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libros.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65AA9F0CA7EDA8816DF9CF7F /* libPods-librosTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-librosTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8926DCDF31E6B4E62E8147F7 /* libPods-libros-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libros-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBD8F6BDFC33EC3701BE292 /* libPods-libros-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libros-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8BD55C2FFFFF5B2EB18CA49 /* Pods-libros-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-libros-tvOSTests/Pods-libros-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		D1D01E51D580876BEB906A2D /* Pods-librosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-librosTests.debug.xcconfig"; path = "Target Support Files/Pods-librosTests/Pods-librosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E08CCE07360109A1B90390D3 /* Pods-libros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libros.debug.xcconfig"; path = "Target Support Files/Pods-libros/Pods-libros.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F996031500A2322E8D478195 /* Pods-booklyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booklyTests.release.xcconfig"; path = "Target Support Files/Pods-booklyTests/Pods-booklyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54AB7AA78A302BE8CD66B5EF /* libPods-booklyTests.a in Frameworks */,
+				5CD0C8BF801966EE91321454 /* libPods-librosTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E06B6B93B718EE0666625D5 /* libPods-bookly.a in Frameworks */,
+				3D42DD9F9F2257CB8D714876 /* libPods-libros.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				696B817FF6C7F0E4652D2129 /* libPods-bookly-tvOS.a in Frameworks */,
+				346BCCA6F9CFF3D5443D57A1 /* libPods-libros-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93CC1C19B2352A69E61D898 /* libPods-bookly-tvOSTests.a in Frameworks */,
+				4A59D2081044F25E383D2161 /* libPods-libros-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* booklyTests */ = {
+		00E356EF1AD99517003FC87E /* librosTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* booklyTests.m */,
+				00E356F21AD99517003FC87E /* librosTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = booklyTests;
+			path = librosTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* bookly */ = {
+		13B07FAE1A68108700A75B9A /* libros */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = bookly;
+			name = libros;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,28 +141,12 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				CF27634AF8F5EE6C5EFF01C9 /* libPods-bookly.a */,
-				376B40747BE5F58D7E54590A /* libPods-bookly-tvOS.a */,
-				B7F76A57F369BC315F4B64C8 /* libPods-bookly-tvOSTests.a */,
-				95D2DA1D5A4D7FF14A016238 /* libPods-booklyTests.a */,
+				5D4C5C0494E3CBCD96B62131 /* libPods-libros.a */,
+				8CBD8F6BDFC33EC3701BE292 /* libPods-libros-tvOS.a */,
+				8926DCDF31E6B4E62E8147F7 /* libPods-libros-tvOSTests.a */,
+				65AA9F0CA7EDA8816DF9CF7F /* libPods-librosTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6D675BA0169AC7DBFA00C1AC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C112BB3F3C34C113196B1704 /* Pods-bookly.debug.xcconfig */,
-				4FB66F1D36E3F9486915DCA3 /* Pods-bookly.release.xcconfig */,
-				707A50A0BDE2C3ADBEC6E863 /* Pods-bookly-tvOS.debug.xcconfig */,
-				C98AFBB309AF9B127665E847 /* Pods-bookly-tvOS.release.xcconfig */,
-				9383C0457B72C58EC59BAA2B /* Pods-bookly-tvOSTests.debug.xcconfig */,
-				C65A6465FC6D2402D342F607 /* Pods-bookly-tvOSTests.release.xcconfig */,
-				84F5AE13A247B8389C559450 /* Pods-booklyTests.debug.xcconfig */,
-				F996031500A2322E8D478195 /* Pods-booklyTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -175,12 +159,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* bookly */,
+				13B07FAE1A68108700A75B9A /* libros */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* booklyTests */,
+				00E356EF1AD99517003FC87E /* librosTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				6D675BA0169AC7DBFA00C1AC /* Pods */,
+				DE7AB2C81278A14740937EF5 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -190,22 +174,38 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* bookly.app */,
-				00E356EE1AD99517003FC87E /* booklyTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* bookly-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* bookly-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* libros.app */,
+				00E356EE1AD99517003FC87E /* librosTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* libros-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* libros-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DE7AB2C81278A14740937EF5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E08CCE07360109A1B90390D3 /* Pods-libros.debug.xcconfig */,
+				57A1E2CFEE4288155A07C758 /* Pods-libros.release.xcconfig */,
+				20EEA9C3E0468868047A570E /* Pods-libros-tvOS.debug.xcconfig */,
+				4D8AF70F26EF1F883D6D9C89 /* Pods-libros-tvOS.release.xcconfig */,
+				353112775E1B7ECE8E360B36 /* Pods-libros-tvOSTests.debug.xcconfig */,
+				A8BD55C2FFFFF5B2EB18CA49 /* Pods-libros-tvOSTests.release.xcconfig */,
+				D1D01E51D580876BEB906A2D /* Pods-librosTests.debug.xcconfig */,
+				00BA8F3BB318731989C5E346 /* Pods-librosTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* booklyTests */ = {
+		00E356ED1AD99517003FC87E /* librosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "booklyTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "librosTests" */;
 			buildPhases = (
-				CFA41B2C84460FF7E3F74541 /* [CP] Check Pods Manifest.lock */,
+				AFED47EB8B5AB6DEDEF0D39A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -215,16 +215,16 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = booklyTests;
-			productName = booklyTests;
-			productReference = 00E356EE1AD99517003FC87E /* booklyTests.xctest */;
+			name = librosTests;
+			productName = librosTests;
+			productReference = 00E356EE1AD99517003FC87E /* librosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* bookly */ = {
+		13B07F861A680F5B00A75B9A /* libros */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "bookly" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "libros" */;
 			buildPhases = (
-				96C529687764273D8CED52F8 /* [CP] Check Pods Manifest.lock */,
+				3444BE41F409076AE9E8DB11 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -235,16 +235,16 @@
 			);
 			dependencies = (
 			);
-			name = bookly;
-			productName = bookly;
-			productReference = 13B07F961A680F5B00A75B9A /* bookly.app */;
+			name = libros;
+			productName = libros;
+			productReference = 13B07F961A680F5B00A75B9A /* libros.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* bookly-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* libros-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "bookly-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "libros-tvOS" */;
 			buildPhases = (
-				E1164C99E0FB77FC22A1A594 /* [CP] Check Pods Manifest.lock */,
+				F3AD1141C0EB8C679F26D9A7 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -255,16 +255,16 @@
 			);
 			dependencies = (
 			);
-			name = "bookly-tvOS";
-			productName = "bookly-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* bookly-tvOS.app */;
+			name = "libros-tvOS";
+			productName = "libros-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* libros-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* bookly-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* libros-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "bookly-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "libros-tvOSTests" */;
 			buildPhases = (
-				7DD4DC215CF63EBEDFC4AB59 /* [CP] Check Pods Manifest.lock */,
+				678D4F90108374862856E860 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -274,9 +274,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "bookly-tvOSTests";
-			productName = "bookly-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* bookly-tvOSTests.xctest */;
+			name = "libros-tvOSTests";
+			productName = "libros-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* libros-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "bookly" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "libros" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -316,10 +316,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* bookly */,
-				00E356ED1AD99517003FC87E /* booklyTests */,
-				2D02E47A1E0B4A5D006451C7 /* bookly-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* bookly-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* libros */,
+				00E356ED1AD99517003FC87E /* librosTests */,
+				2D02E47A1E0B4A5D006451C7 /* libros-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* libros-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -387,7 +387,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		7DD4DC215CF63EBEDFC4AB59 /* [CP] Check Pods Manifest.lock */ = {
+		3444BE41F409076AE9E8DB11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -402,14 +402,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bookly-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-libros-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		96C529687764273D8CED52F8 /* [CP] Check Pods Manifest.lock */ = {
+		678D4F90108374862856E860 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -424,14 +424,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bookly-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-libros-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CFA41B2C84460FF7E3F74541 /* [CP] Check Pods Manifest.lock */ = {
+		AFED47EB8B5AB6DEDEF0D39A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,14 +446,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-booklyTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-librosTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1164C99E0FB77FC22A1A594 /* [CP] Check Pods Manifest.lock */ = {
+		F3AD1141C0EB8C679F26D9A7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,7 +468,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bookly-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-libros-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -520,7 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* booklyTests.m in Sources */,
+				00E356F31AD99517003FC87E /* librosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* booklyTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* librosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,12 +555,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* bookly */;
+			target = 13B07F861A680F5B00A75B9A /* libros */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* bookly-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* libros-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -572,7 +572,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = bookly;
+			path = libros;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -580,14 +580,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84F5AE13A247B8389C559450 /* Pods-booklyTests.debug.xcconfig */;
+			baseConfigurationReference = D1D01E51D580876BEB906A2D /* Pods-librosTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = booklyTests/Info.plist;
+				INFOPLIST_FILE = librosTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -597,17 +597,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookly.app/bookly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/libros.app/libros";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F996031500A2322E8D478195 /* Pods-booklyTests.release.xcconfig */;
+			baseConfigurationReference = 00BA8F3BB318731989C5E346 /* Pods-librosTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = booklyTests/Info.plist;
+				INFOPLIST_FILE = librosTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -617,18 +617,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookly.app/bookly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/libros.app/libros";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C112BB3F3C34C113196B1704 /* Pods-bookly.debug.xcconfig */;
+			baseConfigurationReference = E08CCE07360109A1B90390D3 /* Pods-libros.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = bookly/Info.plist;
+				INFOPLIST_FILE = libros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -636,18 +636,18 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = bookly;
+				PRODUCT_NAME = libros;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FB66F1D36E3F9486915DCA3 /* Pods-bookly.release.xcconfig */;
+			baseConfigurationReference = 57A1E2CFEE4288155A07C758 /* Pods-libros.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = bookly/Info.plist;
+				INFOPLIST_FILE = libros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -655,14 +655,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = bookly;
+				PRODUCT_NAME = libros;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 707A50A0BDE2C3ADBEC6E863 /* Pods-bookly-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 20EEA9C3E0468868047A570E /* Pods-libros-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -673,14 +673,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "bookly-tvOS/Info.plist";
+				INFOPLIST_FILE = "libros-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.bookly-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.libros-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -690,7 +690,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C98AFBB309AF9B127665E847 /* Pods-bookly-tvOS.release.xcconfig */;
+			baseConfigurationReference = 4D8AF70F26EF1F883D6D9C89 /* Pods-libros-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -701,14 +701,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "bookly-tvOS/Info.plist";
+				INFOPLIST_FILE = "libros-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.bookly-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.libros-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -718,7 +718,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9383C0457B72C58EC59BAA2B /* Pods-bookly-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 353112775E1B7ECE8E360B36 /* Pods-libros-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -728,24 +728,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "bookly-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "libros-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.bookly-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.libros-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookly-tvOS.app/bookly-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/libros-tvOS.app/libros-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C65A6465FC6D2402D342F607 /* Pods-bookly-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = A8BD55C2FFFFF5B2EB18CA49 /* Pods-libros-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -755,17 +755,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "bookly-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "libros-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.bookly-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.libros-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookly-tvOS.app/bookly-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/libros-tvOS.app/libros-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -872,7 +872,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "booklyTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "librosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -881,7 +881,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "bookly" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "libros" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -890,7 +890,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "bookly-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "libros-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -899,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "bookly-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "libros-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -908,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "bookly" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "libros" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
