@@ -7,13 +7,24 @@ import {
 } from 'react-native'
 
 export default class AuthorDetails extends Component {
+  componentDidMount() {
+    const {getAuthor} = this.props
+    const vendorId = '245590'
+    getAuthor({
+      vendorId
+    })
+  }
+  
   render(){
     const {
       loading,
+    } = this.props
+    
+    const {
       name,
       about,
       vendorId
-    } = this.props
+    } = loading ? {} : this.props.author
     return (
       <View style={styles.container}>
         <Text style={styles.name}>{name}</Text>

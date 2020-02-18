@@ -21,7 +21,7 @@ import {
 } from 'react-native';
 
 // import MainView from './containers/MainViewContainer'
-import MainView from './components/AuthorDetails'
+import MainView from './containers/AuthorDetailsContainer'
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
@@ -37,9 +37,7 @@ const App: () => React$Node = () => {
     <>
       <Provider store={store}>
         <SafeAreaView>
-          <MainView style={styles.container}
-            name="Zadie Smith"
-            about="so bad bad bad" />
+          <MainView style={styles.container} />
         </SafeAreaView>
       </Provider>
     </>
