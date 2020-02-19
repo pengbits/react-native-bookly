@@ -1,4 +1,5 @@
 import moxios from 'moxios'
+import axios from 'axios'
 import {defineFeature, loadFeature} from 'jest-cucumber';
 
 // mocks
@@ -106,11 +107,11 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
   test('Find an author by name', ({ given, when, then }) => {
     given('the name of a well-known author', () => {
-      expectedAuthor = withMockAuthor()
+      expectedAuthor = getAuthorsMock.authors.find(a => a.vendorId == "17343848")//withMockAuthor()
     });
 
     when('I enter the author\'s name in the searchbox', () => {
-      query = expectedAuthor.name.replace(' ','%20')
+      query = expectedAuthor.name
     });
 
     then('there will be a fetch to the search endpoint', () => {
@@ -132,9 +133,9 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     then('the searchbox will contain an Author result', () => {
       expect(afterState.authors.searchResults).toEqual([
       {
-        vendorId: expectedAuthor.vendorId,
-        name:     expectedAuthor.name,
-        link:     searchResultMock.author.link
+       vendorId: searchResultMock.author.vendorId,
+       name:     searchResultMock.author.name,
+       link:     searchResultMock.author.link
       }
       ])
     })

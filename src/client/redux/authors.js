@@ -25,10 +25,16 @@ export const getAuthor = function({vendorId}){
 
 
 export const searchForAuthor = function({query}){
+  const escapedQuery = escape(query)
+  console.log(`|redux| searchForAuthor: ${escapedQuery}`)
+  console.log(`http://localhost:3000/authors/search?q=${escapedQuery}`)
   return {
     type: SEARCH_FOR_AUTHOR,
-    payload: axios.get(`https://localhost:3000/authors/search?q=${escape(query)}`)
-      .then(xhr => xhr.data.author)
+    payload: axios.get(`http://localhost:3000/authors/search?q=${escapedQuery}`)
+      .then(xhr => {
+        console.log(xhr.data.author.name)
+        return xhr.data.author
+      })
   }
 }
 

@@ -17,9 +17,9 @@ import promiseMiddleware from 'redux-promise-middleware'
 import rootReducer from './redux'
 
 // app:components
-import AuthorDetails from './containers/AuthorDetailsContainer'
-import AuthorList from './containers/AuthorListContainer'
-import AuthorSearch from './components/AuthorSearch'
+import AuthorDetails  from './containers/AuthorDetailsContainer'
+import AuthorList     from './containers/AuthorListContainer'
+import AuthorSearch   from './containers/AuthorSearchContainer'
 
 import {
   SafeAreaView,
