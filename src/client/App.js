@@ -1,6 +1,7 @@
 // libs
 import React from 'react';
-
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
 //redux
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -21,7 +22,7 @@ import {
 } from 'react-native';
 
 // import MainView from './containers/MainViewContainer'
-import MainView from './containers/AuthorDetailsContainer'
+import AuthorDetails from './containers/AuthorDetailsContainer'
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
@@ -34,13 +35,13 @@ const store = createStore(
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <NavigationContainer>
       <Provider store={store}>
         <SafeAreaView>
-          <MainView style={styles.container} />
+          <AuthorDetails style={styles.container} />
         </SafeAreaView>
       </Provider>
-    </>
+    </NavigationContainer>
   );
 };
 
