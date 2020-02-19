@@ -13,7 +13,8 @@ const mapStateToProps = function(state){
 
   return {
     query,
-    loading
+    loading,
+    searchResults
   }
 }
 

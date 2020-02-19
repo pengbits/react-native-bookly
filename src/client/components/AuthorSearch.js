@@ -4,9 +4,30 @@ import {
   TextInput,
   View,
   StyleSheet,
-  Button  
+  Button ,
+  TouchableOpacity  
 } from 'react-native'
 
+
+const Results = ({authors}) => {
+  return authors.length ?
+    <View style={styles.results}>
+      <Text>Found {authors.length} authors:</Text>
+      {authors.map((author) => (
+        <TouchableOpacity 
+         key={author.vendorId}
+          style={styles.resultItem}
+          onPress={() => {console.log('get from vendor '+author.vendorId)}}
+        >
+          <Text>
+            {author.name}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+    : 
+    null
+}
 
 export default class AuthorSearch extends Component {  
   render(){
@@ -15,7 +36,8 @@ export default class AuthorSearch extends Component {
       query,
       searchResults
     } = this.props
-    
+  
+  
     return (
       <View>
         <Text style={styles.label}>Enter Author Name:</Text>
@@ -23,8 +45,10 @@ export default class AuthorSearch extends Component {
           style={styles.input} 
           onChangeText={this.onChangeText.bind(this)}
           onSubmitEditing={this.onSubmit.bind(this)}
-          />
-        {(searchResults || []).map(author => <Text key={author.vendorId}>author.name)</Text>)}
+        />
+        <Results 
+          authors={searchResults}
+        />
       </View>
     )
   }
@@ -52,6 +76,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     fontSize: 22
+  },
+  results: {
+    margin: 10
+  },
+  resultItem: {
+    backgroundColor: '#ccc',
+    padding: 20,
+    marginVertical: 8,
+
   }
-  
 })

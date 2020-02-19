@@ -5,7 +5,8 @@ import {
   Text,
   StyleSheet,
   Button,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native'
 
 export default class AuthorList extends Component {
@@ -27,13 +28,14 @@ export default class AuthorList extends Component {
   
   renderItem({item}){
     const {onSelectAuthor} = this.props
-    return (<Text
-      style={[
-        styles.item
-      ]}
-      onPress={() => onSelectAuthor({vendorId: item.vendorId})}>
-      {item.name}
-    </Text>)
+    return (
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => onSelectAuthor({vendorId: item.vendorId})}
+      >
+        <Text>{item.name}</Text>
+      </TouchableOpacity>
+    )
   }
   
   onAddAuthor(){

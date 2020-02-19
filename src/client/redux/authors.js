@@ -32,9 +32,12 @@ export const searchForAuthor = function({query}){
     type: SEARCH_FOR_AUTHOR,
     payload: axios.get(`http://localhost:3000/authors/search?q=${escapedQuery}`)
       .then(xhr => {
-        console.log(xhr.data.author.name)
+        console.log(xhr.data.author)
         return xhr.data.author
-      })
+      }),
+    meta: {
+      query
+    }
   }
 }
 
@@ -43,6 +46,7 @@ const initialState = {
   loading: false,
   list:[],
   details:{},
+  query: undefined,
   searchResults: []
 }
 
@@ -75,6 +79,7 @@ export const authors = (state=initialState, action={}) => {
       return {
         ...state,
         loading:true,
+        query: action.meta.query,
         searchResults: []
       }
       
