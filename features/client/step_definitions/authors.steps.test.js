@@ -5,7 +5,7 @@ import {defineFeature, loadFeature} from 'jest-cucumber';
 import mockStore, { expectActions, resultingState, respondWithMockResponse } from  '../../../src/client/mockStore'
 import getAuthorsMock from '../../../mocks/get-authors.mock'
 import getAuthorMock  from '../../../mocks/get-author.mock'
-
+import withMockAuthor from '../../server/step_definitions/utils/withMockAuthor'
 
 
 // reducers
@@ -17,8 +17,14 @@ import {
 
 defineFeature(loadFeature('./features/client/authors.feature'), test => {
   
-  beforeEach(function(){ moxios.install()   })
-   afterEach(function(){ moxios.uninstall() })
+  beforeEach(function(){ 
+    moxios.install()   
+    getInitialState()
+  })
+  
+  afterEach(function(){ 
+    moxios.uninstall() 
+  })
  
   const there_are_authors_in_the_db = () => {
     expect(getAuthorsMock.authors.length).toBeGreaterThan(1)
@@ -32,13 +38,14 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
   let store,
     beforeState,
     afterState,
-    json,
-    expectedAuthor
+    expectedAuthor,
+    query
   ;
+
   test('AuthorList', ({ given, when, and, then }) => {
     given('there are authors in the database', there_are_authors_in_the_db)
     
-    when('I render the AuthorList', () => getInitialState())
+    when('I render the AuthorList', () => {})
     
     then('there will be a fetch to the server', () => {
       respondWithMockResponse(moxios, getAuthorsMock)
@@ -64,12 +71,15 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     given('there are authors in the database', there_are_authors_in_the_db)
     when('I render the AuthorDetails', () => {
       getInitialState()
-      expectedAuthor = getAuthorsMock.authors[0]
+      expectedAuthor = withMockAuthor()
     })
 
 
     then('there will be a fetch to the server', () => {
-      respondWithMockResponse(moxios, getAuthorMock)
+      respondWithMockResponse(moxios, {
+        ...getAuthorMock,
+        author: expectedAuthor
+      })
       return store.dispatch(getAuthor({
         vendorId: expectedAuthor.vendorId
       })).then(() => {
@@ -90,5 +100,29 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
       // console.log(afterState.authors.details)
     });
   })
+  
+  test('Find an author by name', ({ given, when, then }) => {
+    given('the name of a well-known author', () => {
+      expectedAuthor = withMockAuthor()
+    });
+
+    when('I enter the author\'s name in the searchbox', () => {
+      query = expectedAuthor.name.replace(' ','%20')
+    });
+
+    then('there will be a fetch to the search endpoint', () => {
+      console.log(query)
+    });
+
+    when('it loads', () => {
+
+    });
+
+    then('the searchbox will contain an Author result', () => {
+
+    });
+  });
+
+
 
 })

@@ -14,3 +14,10 @@ Feature: Authors
      Then there will be a fetch to the server
      When it loads
      Then the view will be populated with some Author attributes
+ 
+ Scenario: Find an author by name 
+   Given the name of a well-known author
+    When I enter the author's name in the searchbox
+    Then there will be a fetch to the search endpoint
+    When it loads
+    Then the searchbox will contain an Author result
