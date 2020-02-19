@@ -1,6 +1,9 @@
 import { connect, Provider } from 'react-redux'
-import MainView from '../components/MainView'
-import {getAuthors} from '../redux/authors'
+import AuthorList from '../components/AuthorListWrapper'
+import {
+  getAuthors,
+  getAuthor
+} from '../redux/authors'
 
 const mapStateToProps = function(state){
   return {
@@ -10,12 +13,13 @@ const mapStateToProps = function(state){
 }
 
 const mapDispatchToProps = {
-  getAuthors
+  getAuthors,
+  getAuthor
 }
 
-const MainViewContainer = connect(
+const AuthorListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainView)
+)(AuthorList)
 
-export default MainViewContainer
+export default AuthorListContainer
