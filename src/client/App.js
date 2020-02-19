@@ -20,7 +20,8 @@ import {
   Text,
 } from 'react-native';
 
-import MainView from './containers/MainViewContainer'
+// import MainView from './containers/MainViewContainer'
+import MainView from './containers/AuthorDetailsContainer'
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
