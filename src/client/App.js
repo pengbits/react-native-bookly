@@ -53,6 +53,7 @@ const App: () => React$Node = () => {
         <Stack.Screen
           name="AuthorDetails" 
           component={AuthorDetails} 
+          options={{title: 'Author Details'}}
         />
       </Stack.Navigator>
       </Provider>
