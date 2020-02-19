@@ -24,11 +24,14 @@ export default class AuthorDetails extends Component {
       name,
       about,
       vendorId
-    } = loading ? {} : this.props.author
+    } = this.props
+    
     return (
       <View style={styles.container}>
         <Text style={styles.name}>{name}</Text>
-        <Text style={styles.about}>{about}</Text>
+        <View>
+        {about.map((p,i) => <Text key={i} style={styles.about}>{p}</Text>)}
+        </View>
       </View>
     )
   }
@@ -41,6 +44,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
   },
   about: {
-    fontSize: 22
+    fontSize: 18
   }
 });

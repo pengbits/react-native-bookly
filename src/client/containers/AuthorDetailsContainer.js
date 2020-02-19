@@ -3,9 +3,16 @@ import AuthorDetails from '../components/AuthorDetails'
 import {getAuthor} from '../redux/authors'
 
 const mapStateToProps = function(state){
+  const {loading} = state.authors
+  const author    = loading ? {} : state.authors.details
+  const { name,about,vendorId } = author
+  const aboutText = (about || '').split('<br />')
+  
   return {
-    author: state.authors.details,
-    loading: state.loading
+    loading,
+    name,
+    about:  aboutText,
+    vendorId
   }
 }
 
