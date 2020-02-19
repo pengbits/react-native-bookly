@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
+import { SafeAreaView } from 'react-native';
 import AuthorList from './AuthorList'
-import {
-  View,
-  Text ,
-  SafeAreaView,
-  Button
-} from 'react-native';
+
 
 
 export default class MainView extends Component {
@@ -37,7 +32,6 @@ export default class MainView extends Component {
   onSelectAuthor({vendorId}){
     const {
       navigation,
-      getAuthorDetails
     } = this.props
     
     navigation.navigate('AuthorDetails', {vendorId})
