@@ -10,24 +10,27 @@ export default class AuthorList extends Component {
   render(){
     const {authors} = this.props
     return (
-      <SafeAreaView style={styles.container}>
       <FlatList
         data={authors}
-        renderItem={this.renderItem}
+        renderItem={this.renderItem.bind(this)}
         keyExtractor={item => item.vendorId}>
       </FlatList>
-    </SafeAreaView>
     )
   }
   
   renderItem({item}){
-    console.log(item)
+    const {navigation} = this.props
     return (<Text
       style={[
         styles.item
-      ]}>
+      ]}
+      onPress={() => this.getAuthorDetails({vendorId: item.vendorId})}>
       {item.name}
     </Text>)
+  }
+  
+  getAuthorDetails({vendorId}){
+    console.log('get author! '+vendorId)
   }
 }
 
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
   },
   item: {
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#ccc',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,

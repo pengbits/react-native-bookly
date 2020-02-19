@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import AuthorList from './AuthorList'
 import {
   View,
-  Text  ,
+  Text ,
+  SafeAreaView,
   Button
 } from 'react-native';
 
@@ -19,9 +20,11 @@ export default class MainView extends Component {
       loading
     } = this.props
     
-    return (<View>
-      <AuthorList authors={authors} style={{}}/>
-    </View>)
+    return (
+      <SafeAreaView>
+        <AuthorList authors={authors} style={{}}/>
+      </SafeAreaView>
+    )
   }
   
   fetchAuthors(){

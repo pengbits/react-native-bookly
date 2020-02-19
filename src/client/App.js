@@ -2,6 +2,9 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
 //redux
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -10,19 +13,23 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware'
 
-// app
+// app:redux
 import rootReducer from './redux'
+
+// app:components
+import AuthorDetails from './containers/AuthorDetailsContainer'
+import AuthorList from './containers/AuthorListContainer'
 
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
+  Button,
   Text,
 } from 'react-native';
 
 // import MainView from './containers/MainViewContainer'
-import AuthorDetails from './containers/AuthorDetailsContainer'
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
@@ -37,9 +44,17 @@ const App: () => React$Node = () => {
   return (
     <NavigationContainer>
       <Provider store={store}>
-        <SafeAreaView>
-          <AuthorDetails style={styles.container} />
-        </SafeAreaView>
+        <Stack.Navigator>
+        <Stack.Screen
+          name="AuthorList"
+          component={AuthorList}
+          options={{title: 'Authors'}}
+        />
+        <Stack.Screen
+          name="AuthorDetails" 
+          component={AuthorDetails} 
+        />
+      </Stack.Navigator>
       </Provider>
     </NavigationContainer>
   );
