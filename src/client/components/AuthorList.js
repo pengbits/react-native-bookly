@@ -3,17 +3,25 @@ import {
   SafeAreaView,
   FlatList,
   Text,
-  StyleSheet
+  StyleSheet,
+  Button,
+  View
 } from 'react-native'
 
 export default class AuthorList extends Component {
   render(){
     return (
-      <FlatList
-        data={this.props.authors}
-        renderItem={this.renderItem.bind(this)}
-        keyExtractor={item => item.vendorId}>
-      </FlatList>
+      <View>
+        <FlatList
+          data={this.props.authors}
+          renderItem={this.renderItem.bind(this)}
+          keyExtractor={item => item.vendorId}>
+        </FlatList>
+        <View style={styles.separator} />
+        <Button title="Add Author" 
+          onPress={this.onAddAuthor.bind(this)}
+        />
+      </View>
     )
   }
   
@@ -27,10 +35,15 @@ export default class AuthorList extends Component {
       {item.name}
     </Text>)
   }
+  
+  onAddAuthor(){
+    this.props.onAddAuthor()
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
   },
   item: {
     backgroundColor: '#ccc',
@@ -41,4 +54,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth
+  }
 });

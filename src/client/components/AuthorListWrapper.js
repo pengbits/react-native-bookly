@@ -20,6 +20,7 @@ export default class MainView extends Component {
         <AuthorList 
           authors={authors} 
           onSelectAuthor={this.onSelectAuthor.bind(this)}
+          onAddAuthor={this.onAddAuthor.bind(this)}
         />
       </SafeAreaView>
     )
@@ -30,10 +31,16 @@ export default class MainView extends Component {
   }
   
   onSelectAuthor({vendorId}){
-    const {
-      navigation,
-    } = this.props
-    
+    const {navigation} = this.props
     navigation.navigate('AuthorDetails', {vendorId})
+  }
+  
+  onAddAuthor(){
+    const {navigation} = this.props
+    this.props.navigation.navigate('AddAuthor')
+  }
+  
+  navigate(view, opts={}){
+    this.props.navigate(view, opts)
   }
 }

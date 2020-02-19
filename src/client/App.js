@@ -19,6 +19,7 @@ import rootReducer from './redux'
 // app:components
 import AuthorDetails from './containers/AuthorDetailsContainer'
 import AuthorList from './containers/AuthorListContainer'
+import AuthorSearch from './components/AuthorSearch'
 
 import {
   SafeAreaView,
@@ -54,6 +55,11 @@ const App: () => React$Node = () => {
           name="AuthorDetails" 
           component={AuthorDetails} 
           options={{title: 'Author Details'}}
+        />
+        <Stack.Screen
+          name="AddAuthor"
+          component={AuthorSearch}
+          options={{title: 'Add Author'}}
         />
       </Stack.Navigator>
       </Provider>
