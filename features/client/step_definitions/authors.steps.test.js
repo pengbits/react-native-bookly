@@ -11,8 +11,9 @@ import withMockAuthor from '../../server/step_definitions/utils/withMockAuthor'
 // reducers
 import rootReducer from '../../../src/client/redux/index'
 import { 
-  getAuthors, GET_AUTHORS,
-  getAuthor,  GET_AUTHOR
+  getAuthors,       GET_AUTHORS,
+  getAuthor,        GET_AUTHOR,
+  searchForAuthor,  SEARCH_FOR_AUTHOR
 } from '../../../src/client/redux/authors'
 
 defineFeature(loadFeature('./features/client/authors.feature'), test => {
@@ -111,15 +112,22 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
 
     then('there will be a fetch to the search endpoint', () => {
-      console.log(query)
+      return store.dispatch(searchForAuthor({query}))
+        .then(() => {
+          expectActions(store, [
+            `${SEARCH_FOR_AUTHOR}_PENDING`,
+            `${SEARCH_FOR_AUTHOR}_FULFILLED`
+          ])
+          afterState = resultingState(store, rootReducer)
+        })
     });
 
     when('it loads', () => {
-
     });
 
     then('the searchbox will contain an Author result', () => {
-
+      const match = afterState.authors.searchResults.find(author => author.vendorId == expectedAuthor.vendorId)
+      expect(match).not.toBe(undefined)
     });
   });
 

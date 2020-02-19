@@ -4,6 +4,7 @@ import axios from 'axios'
 // constants
 export const GET_AUTHORS = 'authors/GET_AUTHORS'
 export const GET_AUTHOR  = 'authors/GET_AUTHOR'
+export const SEARCH_FOR_AUTHOR = 'authors/SEARCH_FOR_AUTHOR'
 
 // action creators
 export const getAuthors = function(){
@@ -23,11 +24,24 @@ export const getAuthor = function({vendorId}){
 }
 
 
+export const searchForAuthor = function(query){
+  return {
+    type: SEARCH_FOR_AUTHOR,
+    payload: new Promise((resolve,reject) => {
+      setTimeout(resolve, 125, {
+        name: 'Billy',
+        vendorId: 999999
+      })
+    })
+  }
+}
+
 // reducers
 const initialState = {
   loading: false,
   list:[],
-  details:{}
+  details:{},
+  searchResults: []
 }
 
 
