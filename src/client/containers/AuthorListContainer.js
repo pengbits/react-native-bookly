@@ -1,6 +1,9 @@
 import { connect, Provider } from 'react-redux'
 import AuthorList from '../components/AuthorListWrapper'
-import {getAuthors} from '../redux/authors'
+import {
+  getAuthors,
+  getAuthor
+} from '../redux/authors'
 
 const mapStateToProps = function(state){
   return {
@@ -10,7 +13,8 @@ const mapStateToProps = function(state){
 }
 
 const mapDispatchToProps = {
-  getAuthors
+  getAuthors,
+  getAuthor
 }
 
 const AuthorListContainer = connect(

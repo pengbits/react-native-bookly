@@ -8,10 +8,13 @@ import {
 
 export default class AuthorDetails extends Component {
   componentDidMount() {
-    const {getAuthor} = this.props
-    const vendorId = '245590'
+    const {
+      route,
+      getAuthor
+    } = this.props
+    
     getAuthor({
-      vendorId
+      vendorId: route.params.vendorId
     })
   }
   

@@ -8,10 +8,9 @@ import {
 
 export default class AuthorList extends Component {
   render(){
-    const {authors} = this.props
     return (
       <FlatList
-        data={authors}
+        data={this.props.authors}
         renderItem={this.renderItem.bind(this)}
         keyExtractor={item => item.vendorId}>
       </FlatList>
@@ -19,18 +18,14 @@ export default class AuthorList extends Component {
   }
   
   renderItem({item}){
-    const {navigation} = this.props
+    const {onSelectAuthor} = this.props
     return (<Text
       style={[
         styles.item
       ]}
-      onPress={() => this.getAuthorDetails({vendorId: item.vendorId})}>
+      onPress={() => onSelectAuthor({vendorId: item.vendorId})}>
       {item.name}
     </Text>)
-  }
-  
-  getAuthorDetails({vendorId}){
-    console.log('get author! '+vendorId)
   }
 }
 

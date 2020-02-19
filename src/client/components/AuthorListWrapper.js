@@ -17,17 +17,29 @@ export default class MainView extends Component {
   render(){
     const {
       authors, 
-      loading
+      loading,
     } = this.props
     
     return (
       <SafeAreaView>
-        <AuthorList authors={authors} style={{}}/>
+        <AuthorList 
+          authors={authors} 
+          onSelectAuthor={this.onSelectAuthor.bind(this)}
+        />
       </SafeAreaView>
     )
   }
   
   fetchAuthors(){
     this.props.getAuthors()
+  }
+  
+  onSelectAuthor({vendorId}){
+    const {
+      navigation,
+      getAuthorDetails
+    } = this.props
+    
+    navigation.navigate('AuthorDetails', {vendorId})
   }
 }
