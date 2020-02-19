@@ -24,15 +24,11 @@ export const getAuthor = function({vendorId}){
 }
 
 
-export const searchForAuthor = function(query){
+export const searchForAuthor = function({query}){
   return {
     type: SEARCH_FOR_AUTHOR,
-    payload: new Promise((resolve,reject) => {
-      setTimeout(resolve, 125, {
-        name: 'Billy',
-        vendorId: 999999
-      })
-    })
+    payload: axios.get(`https://localhost:3000/authors/search?q=${escape(query)}`)
+      .then(xhr => xhr.data.author)
   }
 }
 
@@ -67,6 +63,20 @@ export const authors = (state=initialState, action={}) => {
         ...state,
         loading:false,
         details: {...action.payload}
+      }
+      
+    case `${SEARCH_FOR_AUTHOR}_PENDING`:
+      return {
+        ...state,
+        loading:true,
+        searchResults: []
+      }
+      
+    case `${SEARCH_FOR_AUTHOR}_FULFILLED`:
+      return {
+        ...state,
+        loading:false,
+        searchResults: [action.payload]
       }
       
     default:

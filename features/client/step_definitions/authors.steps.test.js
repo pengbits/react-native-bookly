@@ -5,6 +5,7 @@ import {defineFeature, loadFeature} from 'jest-cucumber';
 import mockStore, { expectActions, resultingState, respondWithMockResponse } from  '../../../src/client/mockStore'
 import getAuthorsMock from '../../../mocks/get-authors.mock'
 import getAuthorMock  from '../../../mocks/get-author.mock'
+import generateSearchForAuthorMock from '../../../mocks/search-for-author-mock'
 import withMockAuthor from '../../server/step_definitions/utils/withMockAuthor'
 
 
@@ -40,7 +41,8 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     beforeState,
     afterState,
     expectedAuthor,
-    query
+    query,
+    searchResultMock
   ;
 
   test('AuthorList', ({ given, when, and, then }) => {
@@ -112,6 +114,8 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
 
     then('there will be a fetch to the search endpoint', () => {
+      searchResultMock = generateSearchForAuthorMock(expectedAuthor)
+      respondWithMockResponse(moxios, searchResultMock)
       return store.dispatch(searchForAuthor({query}))
         .then(() => {
           expectActions(store, [
@@ -126,10 +130,15 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
 
     then('the searchbox will contain an Author result', () => {
-      const match = afterState.authors.searchResults.find(author => author.vendorId == expectedAuthor.vendorId)
-      expect(match).not.toBe(undefined)
-    });
-  });
+      expect(afterState.authors.searchResults).toEqual([
+      {
+        vendorId: expectedAuthor.vendorId,
+        name:     expectedAuthor.name,
+        link:     searchResultMock.author.link
+      }
+      ])
+    })
+  })
 
 
 
