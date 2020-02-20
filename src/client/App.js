@@ -19,6 +19,7 @@ import rootReducer from './redux'
 // app:components
 import AuthorDetails  from './containers/AuthorDetailsContainer'
 import AuthorList     from './containers/AuthorListContainer'
+import AuthorForm     from './containers/AuthorFormContainer'
 import AuthorSearch   from './containers/AuthorSearchContainer'
 
 import {
@@ -57,8 +58,13 @@ const App: () => React$Node = () => {
           options={{title: 'Author Details'}}
         />
         <Stack.Screen
-          name="AddAuthor"
+          name="FindAuthor"
           component={AuthorSearch}
+          options={{title: 'Find Author'}}
+        />
+        <Stack.Screen
+          name="AddAuthor"
+          component={AuthorForm}
           options={{title: 'Add Author'}}
         />
       </Stack.Navigator>
