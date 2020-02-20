@@ -16,13 +16,12 @@ export default class MainView extends Component {
     } = this.props
     
     return (
-      <SafeAreaView>
+
         <AuthorList 
           authors={authors} 
           onSelectAuthor={this.onSelectAuthor.bind(this)}
           onAddAuthor={this.onAddAuthor.bind(this)}
         />
-      </SafeAreaView>
     )
   }
   

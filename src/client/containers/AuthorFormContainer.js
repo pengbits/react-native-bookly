@@ -3,7 +3,15 @@ import AuthorForm from '../components/AuthorForm'
 import {createAuthor} from '../redux/authors'
 
 const mapStateToProps = function(state){
-  return {}
+  const {
+    loading,
+    details
+  } = state.authors
+  return {
+    initialValues: details,
+    loading,
+    details
+  }
 }
 
 const mapDispatchToProps = {

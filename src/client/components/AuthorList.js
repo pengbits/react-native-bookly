@@ -12,14 +12,14 @@ import {
 export default class AuthorList extends Component {
   render(){
     return (
-      <View>
+      <View styles={styles.container}>
         <FlatList
+          style={styles.list}
           data={this.props.authors}
           renderItem={this.renderItem.bind(this)}
           keyExtractor={item => item.vendorId}>
         </FlatList>
-        <View style={styles.separator} />
-        <Button title="Add Author" 
+        <Button styles={styles.button} title="Add Author" 
           onPress={this.onAddAuthor.bind(this)}
         />
       </View>
@@ -45,7 +45,10 @@ export default class AuthorList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+  },
+  list: {
+    height:'90%'
   },
   item: {
     backgroundColor: '#ccc',
@@ -56,9 +59,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth
+  button : {
+    height:'10%'
   }
 });

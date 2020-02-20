@@ -8,9 +8,6 @@ import {
   StyleSheet,
 } from 'react-native'
 
-const submit = values => {
-  console.log('submitting form', values)
-}
 const renderInput = ({ input: { onChange, ...input }}) => {
   return <TextInput style={styles.input} onChangeText={onChange} {...input} />
 }
@@ -24,12 +21,17 @@ class AuthorForm extends Component {
         <Text style={styles.label}>Name</Text>
         <Field name="name" component={renderInput} />
         <Text style={styles.label}>VendorId</Text>
-        <Field name="VendorId" component={renderInput} />
-        <TouchableOpacity onPress={handleSubmit(submit)}>
+        <Field name="vendorId" component={renderInput} />
+        <TouchableOpacity onPress={handleSubmit(this.onSubmit.bind(this))}>
          <Text style={styles.button}>Submit</Text>
        </TouchableOpacity>
       </View>
     )
+  }
+  
+  onSubmit (values)  {
+    console.log(values)
+    this.props.createAuthor(values)
   }
 }
 

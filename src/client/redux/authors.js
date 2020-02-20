@@ -21,17 +21,16 @@ export const getAuthor = function({vendorId}){
     type    : GET_AUTHOR,
     payload : axios.get(`http://localhost:3000/authors/${vendorId}`)
       .then(xhr => xhr.data.author)
+      .catch(e => e)
   }
 }
 
 export const createAuthor = function(attrs){
   return {
     type: CREATE_AUTHOR,
-    payload: axios.get(`http://localhost:3000/authors`, {
-      method: 'POST',
-      body: attrs
-    })
+    payload: axios.post(`http://localhost:3000/authors`, attrs)
       .then(xhr => xhr.data.author)
+      .catch(e => e)
   }
 }
 
@@ -86,10 +85,11 @@ export const authors = (state=initialState, action={}) => {
     }
     
     case `${CREATE_AUTHOR}_FULFILLED`:
+    console.log(action.payload)
       return {
         ...state,
         loading:false,
-        list: [...state.list, action.payload]
+        list: [...state.list]
       }
     
     case `${SEARCH_FOR_AUTHOR}_PENDING`:

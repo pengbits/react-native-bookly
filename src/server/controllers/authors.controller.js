@@ -20,6 +20,7 @@ const search = async (req,res,next) => {
 }
 
 const create = async (req,res,next) => {
+  console.log('authors#create POST '+JSON.stringify(req.body))
   const author = await new Author(req.body).save()
   respondWith(res, {author})  
 }
