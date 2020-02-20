@@ -1,16 +1,33 @@
 import React, {Component} from 'react'
+import { Field, reduxForm } from 'redux-form'
 import {
   Text,
   View,
+  TextInput,
+  TouchableOpacity,
   StyleSheet,
-  SafeAreaView
 } from 'react-native'
 
-export default class AuthorForm extends Component {
+const submit = values => {
+  console.log('submitting form', values)
+}
+const renderInput = ({ input: { onChange, ...input }}) => {
+  return <TextInput style={styles.input} onChangeText={onChange} {...input} />
+}
+
+class AuthorForm extends Component {
   render(){    
+    const { handleSubmit } = this.props
+    
     return (
       <View style={styles.container}>
-        <Text>Author Form</Text>
+        <Text style={styles.label}>Name</Text>
+        <Field name="name" component={renderInput} />
+        <Text style={styles.label}>VendorId</Text>
+        <Field name="VendorId" component={renderInput} />
+        <TouchableOpacity onPress={handleSubmit(submit)}>
+         <Text style={styles.button}>Submit</Text>
+       </TouchableOpacity>
       </View>
     )
   }
@@ -18,11 +35,32 @@ export default class AuthorForm extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10
   },
-  name: {
-    fontSize: 48,
+  label: {
+    fontSize:20,
+    marginBottom: 10,
   },
-  about: {
-    fontSize: 18
-  }
+  input: {
+    marginBottom:15,
+    borderColor: 'black',
+    borderWidth: 1,
+    height: 36,
+    fontSize: 18,
+    width: '100%'
+  },
+  button: {
+    marginTop: 10,
+    marginBottom:15,
+    backgroundColor: 'blue',
+    color: 'white',
+    height: 36,
+    lineHeight: 36,
+    textAlign: 'center',
+    width: '100%'
+  },
 });
+
+export default reduxForm({
+  form:'author'
+})(AuthorForm)
