@@ -25,5 +25,5 @@ Feature: Authors
   Scenario: Create an author
     Given I have an author with valid attributes
      When I save the author to the database
-      And I fetch the authors endpoint
+     When it loads
      Then my author will be in the list

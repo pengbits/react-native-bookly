@@ -157,18 +157,11 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
         })
     });
 
-    and('I fetch the authors endpoint', () => {
-      beforeState = {...afterState}
-      respondWithMockResponse(moxios, getAuthorsMock)
-      return store.dispatch(getAuthors())
-        .then(xhr => {
-          afterState = resultingState(store, rootReducer)
-        })
-    });
+    when('It loads', () => {})
 
     then('my author will be in the list', () => {
       createdAuthor = afterState.authors.list.find(a => a.vendorId == expectedAuthor.vendorId)
-      console.log(createdAuthor)
+      expect(createdAuthor).not.toBe(undefined)
     })
   })
 

@@ -31,7 +31,7 @@ export const createAuthor = function(attrs){
       method: 'POST',
       body: attrs
     })
-      .then(xhr => xhr.data)
+      .then(xhr => xhr.data.author)
   }
 }
 
@@ -65,6 +65,7 @@ export const authors = (state=initialState, action={}) => {
     
     case `${GET_AUTHOR}_PENDING`:
     case `${GET_AUTHORS}_PENDING`:
+    case `${CREATE_AUTHOR}_PENDING`:
       return {
         ...state,
         loading:true
@@ -82,8 +83,15 @@ export const authors = (state=initialState, action={}) => {
         ...state,
         loading:false,
         details: {...action.payload}
+    }
+    
+    case `${CREATE_AUTHOR}_FULFILLED`:
+      return {
+        ...state,
+        loading:false,
+        list: [...state.list, action.payload]
       }
-      
+    
     case `${SEARCH_FOR_AUTHOR}_PENDING`:
       return {
         ...state,
