@@ -16,8 +16,10 @@ const Results = ({authors}) => {
       {authors.map((author) => (
         <TouchableOpacity 
          key={author.vendorId}
-          style={styles.resultItem}
-          onPress={() => {console.log('get from vendor '+author.vendorId)}}
+         style={styles.resultItem}
+         onPress={() => {
+           console.log(`TODO fetch /authors/${author.vendorId}/vendor and parse reponse, seed form`)
+         }}
         >
           <Text>
             {author.name}
