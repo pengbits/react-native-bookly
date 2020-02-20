@@ -83,6 +83,9 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
           about     : expectedAuthor.about, 
           vendorId  : expectedAuthor.vendorId
         }
+      }).then(xhr => {
+        console.log(xhr)
+        return xhr
       })
     })
     

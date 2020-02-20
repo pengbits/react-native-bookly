@@ -2,9 +2,10 @@ import {createAction} from 'redux-actions'
 import axios from 'axios'
 
 // constants
-export const GET_AUTHORS = 'authors/GET_AUTHORS'
-export const GET_AUTHOR  = 'authors/GET_AUTHOR'
+export const GET_AUTHORS       = 'authors/GET_AUTHORS'
+export const GET_AUTHOR        = 'authors/GET_AUTHOR'
 export const SEARCH_FOR_AUTHOR = 'authors/SEARCH_FOR_AUTHOR'
+export const CREATE_AUTHOR     = 'authors/CREATE_AUTHOR'
 
 // action creators
 export const getAuthors = function(){
@@ -23,6 +24,17 @@ export const getAuthor = function({vendorId}){
   }
 }
 
+export const createAuthor = function(attrs){
+  return {
+    type: CREATE_AUTHOR,
+    payload: axios.get(`http://localhost:3000/authors`, {
+      method: 'POST',
+      body: attrs
+    })
+      .then(xhr => xhr.data)
+  }
+}
+
 
 export const searchForAuthor = function({query}){
   const escapedQuery = escape(query)
@@ -31,10 +43,7 @@ export const searchForAuthor = function({query}){
   return {
     type: SEARCH_FOR_AUTHOR,
     payload: axios.get(`http://localhost:3000/authors/search?q=${escapedQuery}`)
-      .then(xhr => {
-        console.log(xhr.data.author)
-        return xhr.data.author
-      }),
+      .then(xhr => xhr.data.author),
     meta: {
       query
     }

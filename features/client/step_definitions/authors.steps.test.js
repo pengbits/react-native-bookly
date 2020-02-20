@@ -6,6 +6,7 @@ import {defineFeature, loadFeature} from 'jest-cucumber';
 import mockStore, { expectActions, resultingState, respondWithMockResponse } from  '../../../src/client/mockStore'
 import getAuthorsMock from '../../../mocks/get-authors.mock'
 import getAuthorMock  from '../../../mocks/get-author.mock'
+import createAuthorMock from '../../../mocks/create-author-mock'
 import generateSearchForAuthorMock from '../../../mocks/search-for-author-mock'
 import withMockAuthor from '../../server/step_definitions/utils/withMockAuthor'
 
@@ -15,6 +16,7 @@ import rootReducer from '../../../src/client/redux/index'
 import { 
   getAuthors,       GET_AUTHORS,
   getAuthor,        GET_AUTHOR,
+  createAuthor,     CREATE_AUTHOR,
   searchForAuthor,  SEARCH_FOR_AUTHOR
 } from '../../../src/client/redux/authors'
 
@@ -42,11 +44,12 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     beforeState,
     afterState,
     expectedAuthor,
+    createdAuthor,
     query,
     searchResultMock
   ;
 
-  test('AuthorList', ({ given, when, and, then }) => {
+  test('List Authors', ({ given, when, and, then }) => {
     given('there are authors in the database', there_are_authors_in_the_db)
     
     when('I render the AuthorList', () => {})
@@ -71,13 +74,12 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     })
   })
   
-  test('AuthorDetails', ({ given, when, then }) => {
+  test('Show Author Details', ({ given, when, then }) => {
     given('there are authors in the database', there_are_authors_in_the_db)
     when('I render the AuthorDetails', () => {
       getInitialState()
       expectedAuthor = withMockAuthor()
     })
-
 
     then('there will be a fetch to the server', () => {
       respondWithMockResponse(moxios, {
@@ -105,7 +107,7 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     });
   })
   
-  test('Find an author by name', ({ given, when, then }) => {
+  test('Search for author by name', ({ given, when, then }) => {
     given('the name of a well-known author', () => {
       expectedAuthor = getAuthorsMock.authors.find(a => a.vendorId == "17343848")//withMockAuthor()
     });
@@ -141,6 +143,34 @@ defineFeature(loadFeature('./features/client/authors.feature'), test => {
     })
   })
 
+  test('Create an author', ({ given, when, and, then }) => {
+    given('I have an author with valid attributes', () => {
+      expectedAuthor = Object.assign({}, createAuthorMock.author)
+      '_id __v vendorId name about'.split(' ').map(k => expect(expectedAuthor[k]).not.toBe(undefined))
+    });
+
+    when('I save the author to the database', () => {
+      respondWithMockResponse(moxios, createAuthorMock)
+      return store.dispatch(createAuthor(expectedAuthor))
+        .then(xhr => {
+          afterState = resultingState(store, rootReducer)
+        })
+    });
+
+    and('I fetch the authors endpoint', () => {
+      beforeState = {...afterState}
+      respondWithMockResponse(moxios, getAuthorsMock)
+      return store.dispatch(getAuthors())
+        .then(xhr => {
+          afterState = resultingState(store, rootReducer)
+        })
+    });
+
+    then('my author will be in the list', () => {
+      createdAuthor = afterState.authors.list.find(a => a.vendorId == expectedAuthor.vendorId)
+      console.log(createdAuthor)
+    })
+  })
 
 
 })
