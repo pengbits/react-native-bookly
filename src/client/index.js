@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 //redux
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 
 // redux-async
@@ -22,14 +22,20 @@ import RedirectMiddleware from './middleware/redirect-middleware'
 // app:components
 import AppContainer from './containers/AppContainer'
 
+const k = '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__';
+const opts = {'name':'Libros','actionsBlacklist' : []} //['@@router/LOCATION_CHANGE','@@redux-form']} // these get noisy
+const composeEnhancers = window[k] ? window[k](opts) : compose;
+
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
   initialState, 
-  applyMiddleware(
-    RedirectMiddleware,
-    promiseMiddleware,
-    thunk
+  composeEnhancers(
+    applyMiddleware(
+      RedirectMiddleware,
+      promiseMiddleware,
+      thunk
+    )
   )
 )
 
