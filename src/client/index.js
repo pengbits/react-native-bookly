@@ -23,7 +23,7 @@ import RedirectMiddleware from './middleware/redirect-middleware'
 import AppContainer from './containers/AppContainer'
 
 const k = '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__';
-const opts = {'name':'Libros','actionsBlacklist' : []} //['@@router/LOCATION_CHANGE','@@redux-form']} // these get noisy
+const opts = {'name':'Libros','actionsBlacklist' : ['@@redux-form']} //['@@router/LOCATION_CHANGE','@@redux-form']} // these get noisy
 const composeEnhancers = window[k] ? window[k](opts) : compose;
 
 const initialState = rootReducer()

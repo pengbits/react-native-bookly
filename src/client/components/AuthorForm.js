@@ -14,8 +14,17 @@ const renderInput = ({ input: { onChange, ...input }}) => {
 
 class AuthorForm extends Component {
   render(){    
-    const { handleSubmit } = this.props
-    
+    const { 
+      handleSubmit,
+      pendingRedirect,
+      navigation
+    } = this.props
+
+    if(pendingRedirect && navigation){
+      navigation.navigate(pendingRedirect)
+      return null
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.label}>Name</Text>
@@ -30,7 +39,6 @@ class AuthorForm extends Component {
   }
   
   onSubmit (values)  {
-    console.log(values)
     this.props.createAuthor(values)
   }
 }

@@ -19,13 +19,7 @@ import {
   Text,
 } from 'react-native';
 
-class AppView extends Component {
-  componentDidMount() {
-    const {
-      pendingNavigate 
-    } = this.props
-    console.log(pendingNavigate)
-  }
+class App extends Component {
   render(){
     return (
       <NavigationContainer>
@@ -55,11 +49,6 @@ class AppView extends Component {
     )
   }
 }
-const App: () => React$Node = () => {
-  return (
-    <AppView />
-  );
-};
 
 const styles = StyleSheet.create({
   container: {

@@ -5,8 +5,8 @@ const mapStateToProps = function(state){
   return {}
 }
 
-const mapDispatchToProps = {
-}
+const mapDispatchToProps = {}
+
 
 const AppContainer = connect(
   mapStateToProps,

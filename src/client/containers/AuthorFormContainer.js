@@ -7,10 +7,15 @@ const mapStateToProps = function(state){
     loading,
     details
   } = state.authors
+  const {
+    pending,
+    view
+  } = state.navigator
   return {
     initialValues: details,
     loading,
-    details
+    details,
+    pendingRedirect: (pending && view ? view : undefined)
   }
 }
 
