@@ -20,13 +20,13 @@ import {
 } from 'react-native';
 
 class AppView extends Component {
-  componentWillMount() {
+  componentDidMount() {
     console.log('cwm')
   }
   render(){
     return (
       <NavigationContainer>
-          <Stack.Navigator>
+        <Stack.Navigator>
           <Stack.Screen
             name="AuthorList"
             component={AuthorList}
