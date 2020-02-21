@@ -85,11 +85,10 @@ export const authors = (state=initialState, action={}) => {
     }
     
     case `${CREATE_AUTHOR}_FULFILLED`:
-    console.log(action.payload)
       return {
         ...state,
         loading:false,
-        list: [...state.list]
+        list: [...state.list, action.payload]
       }
     
     case `${SEARCH_FOR_AUTHOR}_PENDING`:

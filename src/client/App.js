@@ -1,5 +1,5 @@
 // libs
-import React from 'react';
+import React, {Component} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -16,27 +16,18 @@ import promiseMiddleware from 'redux-promise-middleware'
 // app:redux
 import rootReducer from './redux'
 
+// app:middleware
+import RedirectMiddleware from './middleware/redirect-middleware'
+
 // app:components
-import AuthorDetails  from './containers/AuthorDetailsContainer'
-import AuthorList     from './containers/AuthorListContainer'
-import AuthorForm     from './containers/AuthorFormContainer'
-import AuthorSearch   from './containers/AuthorSearchContainer'
+import AppView from './components/App'
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Button,
-  Text,
-} from 'react-native';
-
-// import MainView from './containers/MainViewContainer'
 const initialState = rootReducer()
 const store = createStore(
   rootReducer, 
   initialState, 
   applyMiddleware(
+    RedirectMiddleware,
     promiseMiddleware,
     thunk
   )
@@ -44,39 +35,10 @@ const store = createStore(
 
 const App: () => React$Node = () => {
   return (
-    <NavigationContainer>
-      <Provider store={store}>
-        <Stack.Navigator>
-        <Stack.Screen
-          name="AuthorList"
-          component={AuthorList}
-          options={{title: 'Authors'}}
-        />
-        <Stack.Screen
-          name="AuthorDetails" 
-          component={AuthorDetails} 
-          options={{title: 'Author Details'}}
-        />
-        <Stack.Screen
-          name="FindAuthor"
-          component={AuthorSearch}
-          options={{title: 'Find Author'}}
-        />
-        <Stack.Screen
-          name="AddAuthor"
-          component={AuthorForm}
-          options={{title: 'Add Author'}}
-        />
-      </Stack.Navigator>
-      </Provider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <AppView />
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    margin:20
-  }
-});
 
 export default App;

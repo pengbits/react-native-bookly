@@ -17,7 +17,7 @@ export default class AuthorList extends Component {
           style={styles.list}
           data={this.props.authors}
           renderItem={this.renderItem.bind(this)}
-          keyExtractor={item => item.vendorId}>
+          keyExtractor={((item,i) => `${item.vendorId}-${i}`)}>
         </FlatList>
         <Button styles={styles.button} title="Add Author" 
           onPress={this.onAddAuthor.bind(this)}
