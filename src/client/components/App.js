@@ -21,7 +21,10 @@ import {
 
 class AppView extends Component {
   componentDidMount() {
-    console.log('cwm')
+    const {
+      pendingNavigate 
+    } = this.props
+    console.log(pendingNavigate)
   }
   render(){
     return (
