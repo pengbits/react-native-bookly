@@ -1,6 +1,6 @@
 {
   "name": "bookly",
-  "version": "0.0.1",
+  "version": "1.0.9",
   "description": "simple app for managing favorite authors + books",
   "private": true,
   "scripts": {
