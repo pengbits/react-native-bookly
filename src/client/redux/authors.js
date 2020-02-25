@@ -2,9 +2,10 @@ import {createAction} from 'redux-actions'
 import axios from 'axios'
 
 // constants
-export const GET_AUTHORS = 'authors/GET_AUTHORS'
-export const GET_AUTHOR  = 'authors/GET_AUTHOR'
+export const GET_AUTHORS       = 'authors/GET_AUTHORS'
+export const GET_AUTHOR        = 'authors/GET_AUTHOR'
 export const SEARCH_FOR_AUTHOR = 'authors/SEARCH_FOR_AUTHOR'
+export const CREATE_AUTHOR     = 'authors/CREATE_AUTHOR'
 
 // action creators
 export const getAuthors = function(){
@@ -20,6 +21,16 @@ export const getAuthor = function({vendorId}){
     type    : GET_AUTHOR,
     payload : axios.get(`http://localhost:3000/authors/${vendorId}`)
       .then(xhr => xhr.data.author)
+      .catch(e => e)
+  }
+}
+
+export const createAuthor = function(attrs){
+  return {
+    type: CREATE_AUTHOR,
+    payload: axios.post(`http://localhost:3000/authors`, attrs)
+      .then(xhr => xhr.data.author)
+      .catch(e => e)
   }
 }
 
@@ -31,10 +42,7 @@ export const searchForAuthor = function({query}){
   return {
     type: SEARCH_FOR_AUTHOR,
     payload: axios.get(`http://localhost:3000/authors/search?q=${escapedQuery}`)
-      .then(xhr => {
-        console.log(xhr.data.author)
-        return xhr.data.author
-      }),
+      .then(xhr => xhr.data.author),
     meta: {
       query
     }
@@ -56,6 +64,7 @@ export const authors = (state=initialState, action={}) => {
     
     case `${GET_AUTHOR}_PENDING`:
     case `${GET_AUTHORS}_PENDING`:
+    case `${CREATE_AUTHOR}_PENDING`:
       return {
         ...state,
         loading:true
@@ -73,8 +82,15 @@ export const authors = (state=initialState, action={}) => {
         ...state,
         loading:false,
         details: {...action.payload}
+    }
+    
+    case `${CREATE_AUTHOR}_FULFILLED`:
+      return {
+        ...state,
+        loading:false,
+        list: [...state.list, action.payload]
       }
-      
+    
     case `${SEARCH_FOR_AUTHOR}_PENDING`:
       return {
         ...state,

@@ -4,6 +4,7 @@
   "description": "simple app for managing favorite authors + books",
   "private": true,
   "scripts": {
+    "debugger": "open \"rndebugger://set-debugger-loc?host=localhost&port=8081\"",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
