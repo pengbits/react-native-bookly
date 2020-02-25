@@ -84,7 +84,6 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
           vendorId  : expectedAuthor.vendorId
         }
       }).then(xhr => {
-        console.log(xhr)
         return xhr
       })
     })
@@ -227,28 +226,4 @@ defineFeature(loadFeature('./features/server/authors.feature'), test => {
       expect(Object.keys(author)).toEqual(expect.arrayContaining(['vendorId','name','link','about','image']))
     })
   })
-  
-  test('Find an author by name', ({ given, when, then }) => {
-    given('the name of a well-known author', () => {
-
-    });
-
-    when('I enter the author\'s name in the searchbox', () => {
-
-    });
-
-    then('there will be a fetch to the search endpoint', () => {
-
-    });
-
-    when('it loads', () => {
-
-    });
-
-    then('the searchbox will contain an Author result', () => {
-
-    });
-  });
-
-
 })
